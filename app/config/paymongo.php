@@ -21,7 +21,7 @@ $config['paymongo'] = [
     // SANDBOX MODE - Use test keys for development
     'environment' => 'sandbox', // 'sandbox' or 'live'
     // PayMongo API Keys
-    'secret_key' => $_ENV['STRIPE_SECRET_KEY'] ?? '',
+    'secret_key' => $_ENV['PAYMONGO_SECRET_KEY'] ?? '',
     'public_key' => $_ENV['PAYMONGO_PUBLIC_KEY'] ?? '',
     // API Base URL
     'api_base_url' => 'https://api.paymongo.com/v1',
