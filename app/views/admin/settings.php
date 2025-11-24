@@ -429,7 +429,7 @@
         // In production, you would submit via AJAX or allow form submission
       });
     });
-  });
+  
 
   // Password toggle function
   function togglePassword(inputId, toggleElement) {
