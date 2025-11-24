@@ -230,12 +230,11 @@ class Revenue_migration {
         
         echo "\n";
     }
+}
 
 // Command execution for direct calls
 if (basename(__FILE__) === basename($_SERVER['SCRIPT_NAME'])) {
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-        ";
-
+    
         $this->db->exec($revenueTable);
         echo "  ✅ Revenue table created\n";
 
@@ -246,7 +245,7 @@ if (basename(__FILE__) === basename($_SERVER['SCRIPT_NAME'])) {
     /**
      * Initialize revenue data from existing orders
      */
-    private function initializeRevenueData() {
+     function initializeRevenueData() {
         echo "💾 Initializing revenue data from existing orders...\n";
 
         // Initialize daily revenue summary
@@ -286,7 +285,7 @@ if (basename(__FILE__) === basename($_SERVER['SCRIPT_NAME'])) {
         ";
     }
 
-}
+
 
 // Command execution for direct calls
 if (basename(__FILE__) === basename($_SERVER['SCRIPT_NAME'])) {
