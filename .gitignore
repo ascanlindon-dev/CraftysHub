@@ -10,6 +10,7 @@ runtime/*
 #-------------------------
 /nbproject/
 .idea/*
+[.env]
 
 ## Sublime Text cache files
 *.tmlanguage.cache
