@@ -4,8 +4,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
  * ------------------------------------------------------------------
  * LavaLust - an opensource lightweight PHP MVC Framework
  * ------------------------------------------------------------------
- *
- * MIT License
+<?php
  *
  * Copyright (c) 2020 Ronald M. Marasigan
  *
