@@ -322,7 +322,6 @@ body {
     }
 
 
-
 /* Responsive */
 @media (max-width: 768px) {
     .menu-toggle { display: inline-block !important; }
@@ -349,6 +348,24 @@ body {
             <button class="menu-toggle" onclick="toggleSidebar()" style="display: none; background: none; border: none; color: white; font-size: 1.5em; margin-right: 10px; cursor: pointer;">☰</button>
             🛍️ CraftsHub - Buyer Portal
         </div>
+            <!-- Single Buy Now Popup Overlay (outside product grid, only once) -->
+            <div id="buyNowOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:9999; justify-content:center; align-items:center;">
+                <div id="buyNowPopup" style="background:#fff; padding:32px; border-radius:10px; max-width:350px; margin:auto; position:relative; box-shadow:0 4px 24px rgba(0,0,0,0.18); display:flex; flex-direction:column; align-items:center;">
+                    <span onclick="closeBuyNowOverlay()" style="position:absolute; top:10px; right:16px; cursor:pointer; font-size:24px;">&times;</span>
+                    <h3 style="margin-bottom:18px;">Buy <span id="buyNowProductName"></span></h3>
+                    <form id="buyNowForm" onsubmit="submitBuyNowOverlayForm(event)">
+                        <input type="hidden" id="buyNowProductId" name="product_id">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+                            <label for="buyNowQuantity" style="font-weight:500;">Quantity:</label>
+                            <button type="button" onclick="changeBuyNowQuantity(-1)" style="background:#eee; border:none; border-radius:4px; width:32px; height:32px; font-size:18px;">-</button>
+                            <input type="number" id="buyNowQuantity" name="quantity" min="1" value="1" style="width:60px; text-align:center; font-size:16px;">
+                            <button type="button" onclick="changeBuyNowQuantity(1)" style="background:#eee; border:none; border-radius:4px; width:32px; height:32px; font-size:18px;">+</button>
+                        </div>
+                        <button type="submit" style="background:#667eea; color:#fff; padding:8px 20px; border:none; border-radius:5px;">Checkout</button>
+                        <button type="button" onclick="closeBuyNowOverlay()" style="margin-left:10px; background:#eee; color:#333; border:none; padding:8px 20px; border-radius:5px;">Cancel</button>
+                    </form>
+                </div>
+            </div>
         <div class="user-info">
                 <span>Welcome, <?= htmlspecialchars($buyer_name) ?>!</span>
                 <div class="account-dropdown">
@@ -364,6 +381,55 @@ body {
  
 
     <script>
+            // Buy Now single overlay popup
+            function showBuyNowOverlay(productId, productName, price) {
+                var overlay = document.getElementById('buyNowOverlay');
+                var popup = document.getElementById('buyNowPopup');
+                document.getElementById('buyNowProductName').textContent = productName;
+                document.getElementById('buyNowProductId').value = productId;
+                document.getElementById('buyNowQuantity').value = 1;
+                overlay.style.display = 'flex';
+                overlay.style.zIndex = '9999';
+                popup.style.zIndex = '10000';
+            }
+
+            function closeBuyNowOverlay() {
+                var overlay = document.getElementById('buyNowOverlay');
+                overlay.style.display = 'none';
+            }
+
+            function changeBuyNowQuantity(delta) {
+                var qtyInput = document.getElementById('buyNowQuantity');
+                var current = parseInt(qtyInput.value, 10) || 1;
+                var newVal = current + delta;
+                if (newVal < 1) newVal = 1;
+                qtyInput.value = newVal;
+            }
+
+            function submitBuyNowOverlayForm(event) {
+                event.preventDefault();
+                var productId = document.getElementById('buyNowProductId').value;
+                var quantity = document.getElementById('buyNowQuantity').value;
+                if (!quantity || quantity < 1) {
+                    alert('Please enter a valid quantity.');
+                    return;
+                }
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/buyer/buy-now';
+                var productIdInput = document.createElement('input');
+                productIdInput.type = 'hidden';
+                productIdInput.name = 'product_id';
+                productIdInput.value = productId;
+                var quantityInput = document.createElement('input');
+                quantityInput.type = 'hidden';
+                quantityInput.name = 'quantity';
+                quantityInput.value = quantity;
+                form.appendChild(productIdInput);
+                form.appendChild(quantityInput);
+                document.body.appendChild(form);
+                form.submit();
+            }
     function toggleAccountMenu() {
         var menu = document.getElementById('accountMenu');
         menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
@@ -443,17 +509,27 @@ body {
                                         <?= $product->stock == 0 ? '❌ Out of Stock' : '🛒 Add to Cart' ?>
                                     </button>
                                     <?php if($product->stock > 0): ?>
-                                        <button class="buy-now-btn" onclick="showBuyNowForm(this, <?= $product->product_id ?>, '<?= htmlspecialchars($product->product_name) ?>', <?= $product->price ?>)">
+                                        <button class="buy-now-btn" onclick="showBuyNowOverlay(<?= $product->product_id ?>, '<?= htmlspecialchars($product->product_name) ?>', <?= $product->price ?>)">
                                             ⚡ Buy Now
                                         </button>
-                                        <form class="buy-now-form" style="display:none; margin-top:8px; flex-direction:column; gap:6px;" method="POST" action="/buyer/add-to-cart" onsubmit="return submitBuyNowForm(this);">
-                                            <input type="hidden" name="product_id" value="<?= $product->product_id ?>">
-                                            <label style="font-size:0.95em;">Quantity:
-                                                <input type="number" name="quantity" min="1" max="<?= $product->stock ?>" value="1" style="width:60px; margin-left:6px;">
-                                            </label>
-                                            <button type="submit" style="background:#667eea;color:white;border:none;border-radius:6px;padding:6px 12px;font-weight:600;">Add to Cart</button>
-                                            <button type="button" onclick="hideBuyNowForm(this)" style="background:#ccc;color:#333;border:none;border-radius:6px;padding:6px 12px;">Cancel</button>
-                                        </form>
+                                        <!-- Single Buy Now Popup Overlay -->
+                                        <div id="buyNowOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:9999; justify-content:center; align-items:center;">
+                                            <div id="buyNowPopup" style="background:#fff; padding:32px; border-radius:10px; max-width:350px; margin:auto; position:relative; box-shadow:0 4px 24px rgba(0,0,0,0.18); display:flex; flex-direction:column; align-items:center;">
+                                                <span onclick="closeBuyNowOverlay()" style="position:absolute; top:10px; right:16px; cursor:pointer; font-size:24px;">&times;</span>
+                                                <h3 style="margin-bottom:18px;">Buy <span id="buyNowProductName"></span></h3>
+                                                <form id="buyNowForm" onsubmit="submitBuyNowOverlayForm(event)">
+                                                    <input type="hidden" id="buyNowProductId" name="product_id">
+                                                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+                                                        <label for="buyNowQuantity" style="font-weight:500;">Quantity:</label>
+                                                        <button type="button" onclick="changeBuyNowQuantity(-1)" style="background:#eee; border:none; border-radius:4px; width:32px; height:32px; font-size:18px;">-</button>
+                                                        <input type="number" id="buyNowQuantity" name="quantity" min="1" value="1" style="width:60px; text-align:center; font-size:16px;">
+                                                        <button type="button" onclick="changeBuyNowQuantity(1)" style="background:#eee; border:none; border-radius:4px; width:32px; height:32px; font-size:18px;">+</button>
+                                                    </div>
+                                                    <button type="submit" style="background:#667eea; color:#fff; padding:8px 20px; border:none; border-radius:5px;">Checkout</button>
+                                                    <button type="button" onclick="closeBuyNowOverlay()" style="margin-left:10px; background:#eee; color:#333; border:none; padding:8px 20px; border-radius:5px;">Cancel</button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -463,6 +539,25 @@ body {
             <?php else: ?>
                 <p style="text-align: center; color: #666; padding: 40px;">No products available at the moment.</p>
             <?php endif; ?>
+        </div>
+    </div>
+
+    <!-- Single Buy Now Popup Overlay (moved outside product loop) -->
+    <div id="buyNowOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.35); z-index:9999; justify-content:center; align-items:center;">
+        <div id="buyNowPopup" style="background:#fff; padding:32px; border-radius:10px; max-width:350px; margin:auto; position:relative; box-shadow:0 4px 24px rgba(0,0,0,0.18); display:flex; flex-direction:column; align-items:center;">
+            <span onclick="closeBuyNowOverlay()" style="position:absolute; top:10px; right:16px; cursor:pointer; font-size:24px;">&times;</span>
+            <h3 style="margin-bottom:18px;">Buy <span id="buyNowProductName"></span></h3>
+            <form id="buyNowForm" onsubmit="submitBuyNowOverlayForm(event)">
+                <input type="hidden" id="buyNowProductId" name="product_id">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+                    <label for="buyNowQuantity" style="font-weight:500;">Quantity:</label>
+                    <button type="button" onclick="changeBuyNowQuantity(-1)" style="background:#eee; border:none; border-radius:4px; width:32px; height:32px; font-size:18px;">-</button>
+                    <input type="number" id="buyNowQuantity" name="quantity" min="1" value="1" style="width:60px; text-align:center; font-size:16px;">
+                    <button type="button" onclick="changeBuyNowQuantity(1)" style="background:#eee; border:none; border-radius:4px; width:32px; height:32px; font-size:18px;">+</button>
+                </div>
+                <button type="submit" style="background:#667eea; color:#fff; padding:8px 20px; border:none; border-radius:5px;">Checkout</button>
+                <button type="button" onclick="closeBuyNowOverlay()" style="margin-left:10px; background:#eee; color:#333; border:none; padding:8px 20px; border-radius:5px;">Cancel</button>
+            </form>
         </div>
     </div>
 
@@ -490,30 +585,49 @@ body {
             form.submit();
         }
 
-        // Buy now functionality
-        // Show Buy Now form inline
-        function showBuyNowForm(btn, productId, productName, price) {
-            // Hide any other open forms
-            document.querySelectorAll('.buy-now-form').forEach(f => f.style.display = 'none');
-            // Show this form
-            const form = btn.parentElement.querySelector('.buy-now-form');
-            if (form) form.style.display = 'flex';
+        // Buy Now single overlay popup
+        function showBuyNowOverlay(productId, productName, price) {
+            document.getElementById('buyNowProductName').textContent = productName;
+            document.getElementById('buyNowProductId').value = productId;
+            document.getElementById('buyNowQuantity').value = 1;
+            document.getElementById('buyNowOverlay').style.display = 'flex';
         }
 
-        function hideBuyNowForm(cancelBtn) {
-            const form = cancelBtn.closest('.buy-now-form');
-            if (form) form.style.display = 'none';
+        function closeBuyNowOverlay() {
+            document.getElementById('buyNowOverlay').style.display = 'none';
         }
 
-        function submitBuyNowForm(form, price, productName) {
-            const qtyInput = form.querySelector('input[name="quantity"]');
-            const quantity = parseInt(qtyInput.value, 10);
+        function changeBuyNowQuantity(delta) {
+            var qtyInput = document.getElementById('buyNowQuantity');
+            var current = parseInt(qtyInput.value, 10) || 1;
+            var newVal = current + delta;
+            if (newVal < 1) newVal = 1;
+            qtyInput.value = newVal;
+        }
+
+        function submitBuyNowOverlayForm(event) {
+            event.preventDefault();
+            var productId = document.getElementById('buyNowProductId').value;
+            var quantity = document.getElementById('buyNowQuantity').value;
             if (!quantity || quantity < 1) {
                 alert('Please enter a valid quantity.');
-                return false;
+                return;
             }
-            // No confirmation, just submit
-            return true;
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/buyer/buy-now';
+            var productIdInput = document.createElement('input');
+            productIdInput.type = 'hidden';
+            productIdInput.name = 'product_id';
+            productIdInput.value = productId;
+            var quantityInput = document.createElement('input');
+            quantityInput.type = 'hidden';
+            quantityInput.name = 'quantity';
+            quantityInput.value = quantity;
+            form.appendChild(productIdInput);
+            form.appendChild(quantityInput);
+            document.body.appendChild(form);
+            form.submit();
         }
 
         // Mobile sidebar toggle

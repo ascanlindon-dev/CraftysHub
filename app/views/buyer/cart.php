@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -495,11 +494,24 @@ body {
                                 </form>
                             </div>
                             <div class="item-total">₱<?= number_format($item->price * $item->quantity, 2) ?></div>
-                            <form method="POST" action="/buyer/remove-from-cart" style="display: inline;">
+                            <form method="POST" action="/buyer/remove-from-cart" style="display: inline;" onsubmit="return showRemoveCartPopup(event, <?= $item->cart_id ?>)">
                                 <input type="hidden" name="cart_id" value="<?= $item->cart_id ?>">
-                                <button type="submit" class="remove-btn" onclick="return confirm('Remove this item from cart?')">🗑️</button>
+                                <button type="submit" class="remove-btn">🗑️</button>
                             </form>
                         </div>
+                            <!-- Remove from Cart Popup Overlay -->
+                            <div id="removeCartOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:transparent; z-index:9999;">
+                                <div id="removeCartPopup" style="position:absolute; left:50%; top:20%; transform:translate(-50%,0); background:#fff; padding:32px; border-radius:10px; max-width:350px; width:90vw; box-shadow:0 4px 24px rgba(0,0,0,0.18); display:flex; flex-direction:column; align-items:center;">
+                                    <span onclick="closeRemoveCartOverlay()" style="position:absolute; top:10px; right:16px; cursor:pointer; font-size:24px;">&times;</span>
+                                    <h3 style="margin-bottom:18px;">Remove Item</h3>
+                                    <div style="margin-bottom:18px; text-align:center;">Are you sure you want to remove this item from your cart?</div>
+                                    <form id="removeCartForm" method="POST" action="/buyer/remove-from-cart" style="width:100%; display:flex; flex-direction:column; align-items:center;">
+                                        <input type="hidden" id="removeCartId" name="cart_id">
+                                        <button type="submit" style="background:#dc3545; color:#fff; padding:8px 20px; border:none; border-radius:5px; margin-bottom:10px;">Yes, Remove</button>
+                                        <button type="button" onclick="closeRemoveCartOverlay()" style="background:#eee; color:#333; border:none; padding:8px 20px; border-radius:5px;">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
                     <?php endforeach; ?>
                 </div>
 
@@ -557,7 +569,19 @@ body {
                 sidebar.classList.remove('active');
             }
         });
+        // Remove from cart popup logic
+        function showRemoveCartPopup(event, cartId) {
+            event.preventDefault();
+            document.getElementById('removeCartId').value = cartId;
+            document.getElementById('removeCartOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            return false;
+        }
+
+        function closeRemoveCartOverlay() {
+            document.getElementById('removeCartOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
-
 </html>

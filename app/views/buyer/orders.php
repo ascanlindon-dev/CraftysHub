@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -733,6 +732,28 @@ body {
                                 <button class="btn btn-outline" onclick="cancelOrder(<?= $order->id ?>, '<?= htmlspecialchars($order->order_number ?? $order->id) ?>')">❌ Cancel</button>
                             <?php endif; ?>
                         </div>
+                            <!-- Cancel Order Popup Overlay (rendered ONCE per page) -->
+                            <div id="cancelOrderOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:transparent; z-index:9999;">
+                                <div id="cancelOrderPopup" style="position:absolute; left:50%; top:15%; transform:translate(-50%,0); background:#fff; padding:32px; border-radius:10px; max-width:350px; width:90vw; box-shadow:0 4px 24px rgba(0,0,0,0.18); display:flex; flex-direction:column; align-items:center;">
+                                    <span onclick="closeCancelOrderOverlay()" style="position:absolute; top:10px; right:16px; cursor:pointer; font-size:24px;">&times;</span>
+                                    <h3 style="margin-bottom:18px;">Cancel Order</h3>
+                                    <form id="cancelOrderForm" onsubmit="submitCancelOrderForm(event)">
+                                        <input type="hidden" id="cancelOrderId" name="order_id">
+                                        <div style="margin-bottom:18px; width:100%;">
+                                            <label for="cancelReason" style="font-weight:500;">Reason:</label>
+                                            <select id="cancelReason" name="reason" style="width:100%; margin-top:8px; padding:6px; border-radius:4px;">
+                                                <option value="Changed mind">Changed my mind</option>
+                                                <option value="Found better price">Found a better price</option>
+                                                <option value="Ordered by mistake">Ordered by mistake</option>
+                                                <option value="Other">Other (please specify below)</option>
+                                            </select>
+                                            <textarea id="cancelOtherReason" name="other_reason" placeholder="Other reason..." style="width:100%; margin-top:8px; padding:6px; border-radius:4px; display:none;"></textarea>
+                                        </div>
+                                        <button type="submit" style="background:#dc3545; color:#fff; padding:8px 20px; border:none; border-radius:5px;">Confirm Cancel</button>
+                                        <button type="button" onclick="closeCancelOrderOverlay()" style="margin-left:10px; background:#eee; color:#333; border:none; padding:8px 20px; border-radius:5px;">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -929,23 +950,78 @@ body {
             }
         });
 
-        // Cancel order functionality
+        // Cancel order popup logic
         function cancelOrder(orderId, orderNumber) {
-            if (confirm(`Are you sure you want to cancel Order #${orderNumber}?\n\nThis action cannot be undone.`)) {
-                // Create a form to submit the cancellation
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.action = '/buyer/cancel-order';
-                
-                const orderIdInput = document.createElement('input');
-                orderIdInput.type = 'hidden';
-                orderIdInput.name = 'order_id';
-                orderIdInput.value = orderId;
-                
-                form.appendChild(orderIdInput);
-                document.body.appendChild(form);
-                form.submit();
+            // Set order id in hidden input
+            document.getElementById('cancelOrderId').value = orderId;
+            // Reset reason fields
+            document.getElementById('cancelReason').value = 'Changed mind';
+            document.getElementById('cancelOtherReason').style.display = 'none';
+            document.getElementById('cancelOtherReason').value = '';
+            // Show overlay
+            document.getElementById('cancelOrderOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCancelOrderOverlay() {
+            document.getElementById('cancelOrderOverlay').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Show/hide other reason textarea
+        document.addEventListener('DOMContentLoaded', function() {
+            var reasonSelect = document.getElementById('cancelReason');
+            var otherReason = document.getElementById('cancelOtherReason');
+            reasonSelect.addEventListener('change', function() {
+                if (this.value === 'Other') {
+                    otherReason.style.display = 'block';
+                } else {
+                    otherReason.style.display = 'none';
+                    otherReason.value = '';
+                }
+            });
+        });
+
+        // Handle cancel order form submit
+        function submitCancelOrderForm(event) {
+            event.preventDefault();
+            var orderId = document.getElementById('cancelOrderId').value;
+            var reason = document.getElementById('cancelReason').value;
+            var otherReason = document.getElementById('cancelOtherReason').value;
+
+            // Optionally validate
+            if (reason === 'Other' && otherReason.trim() === '') {
+                alert('Please specify your reason for cancellation.');
+                return;
             }
+
+            // Submit via POST
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/buyer/cancel-order';
+
+            var orderIdInput = document.createElement('input');
+            orderIdInput.type = 'hidden';
+            orderIdInput.name = 'order_id';
+            orderIdInput.value = orderId;
+            form.appendChild(orderIdInput);
+
+            var reasonInput = document.createElement('input');
+            reasonInput.type = 'hidden';
+            reasonInput.name = 'reason';
+            reasonInput.value = reason;
+            form.appendChild(reasonInput);
+
+            if (reason === 'Other') {
+                var otherReasonInput = document.createElement('input');
+                otherReasonInput.type = 'hidden';
+                otherReasonInput.name = 'other_reason';
+                otherReasonInput.value = otherReason;
+                form.appendChild(otherReasonInput);
+            }
+
+            document.body.appendChild(form);
+            form.submit();
         }
 
         // Filter orders by status
@@ -1035,5 +1111,4 @@ body {
         });
     </script>
 </body>
-
 </html>

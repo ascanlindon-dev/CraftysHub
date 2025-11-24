@@ -91,9 +91,6 @@ tr:hover { background:#f8f9fa; }
           <th>Buyer ID</th>
           <th>Status</th>
           <th>Grand Total</th>
-          <th>Shipping Name</th>
-          <th>Email</th>
-          <th>Phone</th>
           <th>Address</th>
           <th>Payment Method</th>
           <th>Payment Status</th>
