@@ -53,7 +53,6 @@ $config['ember_helper_enabled'] = FALSE;
 |
 */
 $config['cache_path'] = ROOT_DIR . 'runtime/cache/';
-
 /*
 |--------------------------------------------------------------------------
 | Views Path
