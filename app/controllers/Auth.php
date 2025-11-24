@@ -127,7 +127,7 @@ class Auth extends Controller {
         $client = new \Google_Client();
         $client->setClientId($_ENV['GOOGLE_CLIENT_ID'] ?? '');
         $client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET'] ?? '');
-        $client->setRedirectUri('http://localhost:4000/auth/google-callback');
+        $client->setRedirectUri('https://craftyshub.onrender.com/auth/google-callback');
         $client->addScope('email');
         $client->addScope('profile');
         $auth_url = $client->createAuthUrl();
@@ -140,7 +140,7 @@ class Auth extends Controller {
         $client = new \Google_Client();
         $client->setClientId($_ENV['GOOGLE_CLIENT_ID'] ?? '');
         $client->setClientSecret($_ENV['GOOGLE_CLIENT_SECRET'] ?? '');
-        $client->setRedirectUri('http://localhost:4000/auth/google-callback');
+        $client->setRedirectUri('https://craftyshub.onrender.com/auth/google-callback');
         $client->addScope('email');
         $client->addScope('profile');
         if (isset($_GET['code'])) {

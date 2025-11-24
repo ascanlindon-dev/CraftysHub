@@ -34,8 +34,8 @@ $config['paymongo'] = [
     // Currency
     'currency' => 'PHP',
     // Callback URLs
-    'success_url' => 'http://localhost:4000/buyer/payment/gcash-success',
-    'failed_url' => 'http://localhost:4000/buyer/payment/gcash-failed',
+    'success_url' => 'https://craftyshub.onrender.com/buyer/payment/gcash-success',
+    'failed_url' => 'https://craftyshub.onrender.com/buyer/payment/gcash-failed',
 ];
 
 return $config;
