@@ -104,4 +104,3 @@ if (!function_exists('get_site_setting')) {
         }
     }
 }
-?>
