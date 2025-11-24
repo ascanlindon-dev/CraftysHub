@@ -108,9 +108,6 @@ tr:hover { background:#f8f9fa; }
             <td><?= $o->buyer_id ?? '' ?></td>
             <td><?= htmlspecialchars($o->status ?? '') ?></td>
             <td>₱<?= number_format($o->grand_total ?? 0, 2) ?></td>
-            <td><?= htmlspecialchars($o->shipping_name ?? '') ?></td>
-            <td><?= htmlspecialchars($o->shipping_email ?? '') ?></td>
-            <td><?= htmlspecialchars($o->shipping_phone ?? '') ?></td>
             <td><?= htmlspecialchars($o->shipping_address ?? '') ?></td>
             <td><?= htmlspecialchars($o->payment_method ?? '') ?></td>
             <td><?= htmlspecialchars($o->payment_status ?? '') ?></td>
