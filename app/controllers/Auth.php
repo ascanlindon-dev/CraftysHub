@@ -96,7 +96,6 @@ class Auth extends Controller {
 
                         if ($this->User->create_user($user_data)) {
                             $_SESSION['success_message'] = 'Account created successfully! You can now login.';
-                            redirect('/login');
                         } else {
                             $_SESSION['error_message'] = 'Failed to create account. Please try again.';
                         }
