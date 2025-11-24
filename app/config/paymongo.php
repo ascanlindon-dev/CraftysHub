@@ -39,34 +39,3 @@ $config['paymongo'] = [
 ];
 
 return $config;
-<?php
-defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
-
-/**
- * PayMongo API Configuration
- * Get your API keys from: https://dashboard.paymongo.com/developers
- */
-
-
-$config['paymongo'] = [
-    // SANDBOX MODE - Use test keys for development
-    'environment' => 'sandbox', // 'sandbox' or 'live'
-    // PayMongo API Keys
-    'secret_key' => $_ENV['STRIPE_SECRET_KEY'] ?? '',
-    'public_key' => $_ENV['PAYMONGO_PUBLIC_KEY'] ?? '',
-    // API Base URL
-    'api_base_url' => 'https://api.paymongo.com/v1',
-    // Payment Methods
-    'enabled_methods' => [
-        'gcash',
-        'paymaya',
-        'grab_pay',
-    ],
-    // Currency
-    'currency' => 'PHP',
-    // Callback URLs
-    'success_url' => 'http://localhost:4000/buyer/payment/gcash-success',
-    'failed_url' => 'http://localhost:4000/buyer/payment/gcash-failed',
-];
-
-return $config;
