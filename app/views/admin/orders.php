@@ -91,14 +91,10 @@ tr:hover { background:#f8f9fa; }
           <th>Buyer ID</th>
           <th>Status</th>
           <th>Grand Total</th>
-          <th>Shipping Name</th>
-          <th>Email</th>
-          <th>Phone</th>
           <th>Address</th>
           <th>Payment Method</th>
           <th>Payment Status</th>
           <th>Order Date</th>
-          <th>Notes</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -111,14 +107,10 @@ tr:hover { background:#f8f9fa; }
             <td><?= $o->buyer_id ?? '' ?></td>
             <td><?= htmlspecialchars($o->status ?? '') ?></td>
             <td>₱<?= number_format($o->grand_total ?? 0, 2) ?></td>
-            <td><?= htmlspecialchars($o->shipping_name ?? '') ?></td>
-            <td><?= htmlspecialchars($o->shipping_email ?? '') ?></td>
-            <td><?= htmlspecialchars($o->shipping_phone ?? '') ?></td>
             <td><?= htmlspecialchars($o->shipping_address ?? '') ?></td>
             <td><?= htmlspecialchars($o->payment_method ?? '') ?></td>
             <td><?= htmlspecialchars($o->payment_status ?? '') ?></td>
             <td><?= $o->order_date ?? '' ?></td>
-            <td><?= htmlspecialchars($o->order_notes ?? '') ?></td>
             <td class="actions">
               <a href="/admin/orders/view/<?= $o->id ?>" class="view-btn"><i class="fas fa-eye"></i> View</a>
             </td>

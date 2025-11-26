@@ -13,13 +13,15 @@ function notif_helper($recipient, $subject, $message, $attachment_path = null)
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'catada04@gmail.com';
-        $mail->Password   = 'ywnu fckz pjtp qsho';
+        // Use the recipient email as the sender and SMTP user
+        $mail->Username   = $recipient;
+        // You must provide the correct app password for the recipient's email
+        $mail->Password   = getenv('GMAIL_APP_PASSWORD') ?: 'your_app_password_here';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
 
         //Recipients
-        $mail->setFrom('miacasanova519@gmail.com', 'Mailer');
+        $mail->setFrom($recipient, 'OTP Sender');
         $mail->addAddress($recipient);
 
         //Attachments

@@ -12,10 +12,10 @@ if (!function_exists('get_email_config')) {
      */
     function get_email_config() {
         // Database configuration
-        $host = 'localhost';
+        $host = 'sql12.freesqldatabase.com';
         $dbname = 'craftyshub';
-        $username = 'root';
-        $password = '';
+        $username = 'sql12809072';
+        $password = 'zg492Kg18k';
         
         try {
             $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -83,10 +83,10 @@ if (!function_exists('get_site_setting')) {
      */
     function get_site_setting($key, $default = null) {
         // Database configuration
-        $host = 'localhost';
+        $host = 'sql12.freesqldatabase.com';
         $dbname = 'craftyshub';
-        $username = 'root';
-        $password = '';
+        $username = 'sql12809072';
+        $password = 'zg492Kg18k';
         
         try {
             $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
