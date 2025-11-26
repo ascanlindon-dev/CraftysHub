@@ -91,9 +91,9 @@ class Auth extends Controller {
                                 'created_at' => date('Y-m-d H:i:s')
                             ];
 
-                            // Send OTP to email (implement email sending next)
-                            // require_once APPPATH . 'helpers/email_helper.php';
-                            // send_otp_email($email, $otp);
+                            // Send OTP to email
+                            require_once __DIR__ . '/../helpers/notif_helper.php';
+                            notif_helper($email, 'Your OTP Code', "Your OTP is: $otp");
 
                             // Redirect to OTP verification page
                             redirect('/otp_verify');
