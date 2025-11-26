@@ -129,8 +129,8 @@ $router->get('/buyer/payment/gcash-failed', 'Buyer::gcashFailed');
 $router->get('/buyer/customer-service', 'Buyer::customerService');
 $router->post('/buyer/customer-service', 'Buyer::customerService');
 
-$router->get('/otp-verify', 'Auth::verifyOtp');
-$router->post('/otp-verify', 'Auth::verifyOtp');
+$router->get('/otp_verify', 'Auth::verifyOtp');
+$router->post('/otp_verify', 'Auth::verifyOtp');
 
 
 
