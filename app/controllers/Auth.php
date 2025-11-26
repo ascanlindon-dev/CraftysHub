@@ -67,47 +67,72 @@ class Auth extends Controller {
             redirect('/admin/dashboard');
         }
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $full_name = $_POST['full_name'] ?? '';
-            $email = $_POST['email'] ?? '';
-            $phone_number = $_POST['phone_number'] ?? '';
-            $password = $_POST['password'] ?? '';
-            $confirm_password = $_POST['confirm_password'] ?? '';
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $full_name = $_POST['full_name'] ?? '';
+                $email = $_POST['email'] ?? '';
+                $phone_number = $_POST['phone_number'] ?? '';
+                $password = $_POST['password'] ?? '';
+                $confirm_password = $_POST['confirm_password'] ?? '';
 
+                if (!empty($full_name) && !empty($email) && !empty($phone_number) && !empty($password) && !empty($confirm_password)) {
+                    if ($password === $confirm_password) {
+                        // Check if user already exists
+                        $existing_user = $this->User->get_user_by_email($email);
 
-            if (!empty($full_name) && !empty($email) && !empty($phone_number) && !empty($password) && !empty($confirm_password)) {
-                if ($password === $confirm_password) {
-                    // Check if user already exists
-                    $existing_user = $this->User->get_user_by_email($email);
+                        if (!$existing_user && $email !== 'ascanlindon@gmail.com') {
+                            // Generate OTP
+                            $otp = rand(100000, 999999);
+                            $_SESSION['registration_otp'] = $otp;
+                            $_SESSION['registration_data'] = [
+                                'full_name' => $full_name,
+                                'email' => $email,
+                                'phone_number' => $phone_number,
+                                'password' => $password, // In production, use password_hash($password, PASSWORD_DEFAULT)
+                                'created_at' => date('Y-m-d H:i:s')
+                            ];
 
-                    if (!$existing_user && $email !== 'ascanlindon@gmail.com') {
-                        // Create new user in database
-                        $user_data = [
-                            'full_name' => $full_name,
-                            'email' => $email,
-                            'phone_number' => $phone_number,
-                            'password' => $password, // In production, use password_hash($password, PASSWORD_DEFAULT)
-                            'created_at' => date('Y-m-d H:i:s')
-                        ];
+                            // Send OTP to email (implement email sending next)
+                            // require_once APPPATH . 'helpers/email_helper.php';
+                            // send_otp_email($email, $otp);
 
-                        if ($this->User->create_user($user_data)) {
-                            $_SESSION['success_message'] = 'Account created successfully! You can now login.';
-                            redirect('/login');
+                            // Redirect to OTP verification page
+                            redirect('/verify-otp');
                         } else {
-                            $_SESSION['error_message'] = 'Failed to create account. Please try again.';
+                            $_SESSION['error_message'] = 'Email already exists.';
                         }
                     } else {
-                        $_SESSION['error_message'] = 'Email already exists.';
+                        $_SESSION['error_message'] = 'Passwords do not match.';
                     }
                 } else {
-                    $_SESSION['error_message'] = 'Passwords do not match.';
+                    $_SESSION['error_message'] = 'Please fill in all fields.';
+                }
+            }
+            $this->call->view('auth/signup');
+    }
+
+    /** 🔐 OTP Verification */
+    public function verifyOtp() {
+        $error = '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $otp = $_POST['otp_code'] ?? '';
+            // Example OTP validation using session
+            if (isset($_SESSION['registration_otp']) && $otp == $_SESSION['registration_otp']) {
+                // Registration data is valid, save user to database
+                $data = $_SESSION['registration_data'] ?? [];
+                if (!empty($data)) {
+                    $this->User->create_user($data);
+                    unset($_SESSION['registration_otp'], $_SESSION['registration_data']);
+                    $_SESSION['success_message'] = 'Account verified and created!';
+                    header('Location: /buyer/dashboard');
+                    exit;
+                } else {
+                    $error = 'Registration data missing.';
                 }
             } else {
-                $_SESSION['error_message'] = 'Please fill in all fields.';
+                $error = 'Invalid verification code.';
             }
         }
-        
-        $this->call->view('auth/signup');
+        include __DIR__ . '/../views/auth/verify_otp.php';
     }
 
     /** 🚪 Logout */
