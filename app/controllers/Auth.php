@@ -96,7 +96,7 @@ class Auth extends Controller {
                             // send_otp_email($email, $otp);
 
                             // Redirect to OTP verification page
-                            redirect('/verify-otp');
+                            redirect('/otp-verify');
                         } else {
                             $_SESSION['error_message'] = 'Email already exists.';
                         }
@@ -132,7 +132,7 @@ class Auth extends Controller {
                 $error = 'Invalid verification code.';
             }
         }
-        include __DIR__ . '/../views/auth/verify_otp.php';
+        include __DIR__ . '/../views/auth/otp-verify.php';
     }
 
     /** 🚪 Logout */
