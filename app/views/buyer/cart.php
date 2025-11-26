@@ -5,6 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Cart - CraftsHub</title>
 <style>
+/* Price breakdown below quantity in cart summary */
+.item-breakdown {
+    font-size: 0.92em;
+    color: #8d735c;
+    background: #f8f6f4;
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin-top: 4px;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+/* Hamburger icon for sidebar toggle */
+.sidebar-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+}
+.sidebar-toggle-btn .bar {
+    width: 26px;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+.sidebar-hidden {
+    display: none !important;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
@@ -21,6 +58,11 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 .logo { font-size: 1.8em; font-weight: bold; }
 .user-info { display: flex; align-items: center; gap: 15px; }
@@ -114,6 +156,7 @@ body {
     margin-left: 250px;
     padding: 30px;
     min-height: calc(100vh - 80px);
+    margin-top: 80px; /* Height of header */
 }
 
 .page-header {
@@ -454,6 +497,7 @@ body {
     .main-content { 
         margin-left: 0;
         padding: 20px; 
+        margin-top: 80px; /* Height of header */
     }
     .cart-container {
         grid-template-columns: 1fr;
@@ -478,7 +522,12 @@ body {
     <!-- Header -->
     <div class="header">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <button class="menu-toggle" onclick="toggleSidebar()" style="font-size: 1.2em; font-weight: 600;">☰</button>
+            <!-- Sidebar Toggle Button (Hamburger) at far left -->
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" onclick="toggleSidebarVisibility()" title="Toggle Quick Actions">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <div class="logo">CraftsHub - My Cart</div>
         </div>
         <div class="user-info">
@@ -510,7 +559,8 @@ body {
     </div>
 
     <!-- Sidebar Navigation -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
+                
         <h3 class="sidebar-title">Quick Actions</h3>
         <a href="/buyer/dashboard" class="sidebar-item"><span class="sidebar-icon">⌂</span> Dashboard</a>
         <a href="/buyer/cart" class="sidebar-item active"><span class="sidebar-icon">🛒</span> View Cart</a>
@@ -573,6 +623,11 @@ body {
                                 <div class="item-details">
                                     <div class="item-name"><?= htmlspecialchars($item->product_name) ?></div>
                                     <div class="item-price">₱<?= number_format($item->price, 2) ?> each</div>
+                                    <?php if($item->quantity > 1): ?>
+                                        <div class="item-breakdown">
+                                            ₱<?= number_format($item->price, 2) ?> x <?= $item->quantity ?> = ₱<?= number_format($item->price * $item->quantity, 2) ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                                 
                                 <!-- Quantity Controls -->
@@ -637,6 +692,20 @@ body {
     </div>
 
     <script>
+
+        // Sidebar hide/unhide toggle
+                function toggleSidebarVisibility() {
+                    const sidebar = document.getElementById('sidebar');
+                    sidebar.classList.toggle('sidebar-hidden');
+                }
+
+                // Optional: Hide sidebar by default on mobile
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (window.innerWidth <= 768) {
+                        document.getElementById('sidebar').classList.add('sidebar-hidden');
+                    }
+                });
+                ù
         // Mobile sidebar toggle
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');

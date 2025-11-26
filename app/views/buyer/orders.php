@@ -5,6 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Orders - CraftsHub</title>
 <style>
+/* Hamburger icon for sidebar toggle */
+.sidebar-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+}
+.sidebar-toggle-btn .bar {
+    width: 26px;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+.sidebar-hidden {
+    display: none !important;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
@@ -21,6 +46,11 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 .logo { font-size: 1.8em; font-weight: bold; }
 .user-info { display: flex; align-items: center; gap: 15px; }
@@ -114,6 +144,7 @@ body {
     margin-left: 250px;
     padding: 30px;
     min-height: calc(100vh - 80px);
+    margin-top: 80px; /* Height of header */
 }
 
 .page-header {
@@ -565,6 +596,7 @@ body {
     .main-content { 
         margin-left: 0;
         padding: 20px; 
+        margin-top: 80px; /* Height of header */
     }
     .order-header {
         flex-direction: column;
@@ -617,7 +649,12 @@ body {
     <!-- Header -->
     <div class="header">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+            <!-- Sidebar Toggle Button (Hamburger) at far left -->
+            <button class="sidebar-toggle-btn" id="sidebarToggleBtn" onclick="toggleSidebarVisibility()" title="Toggle Quick Actions">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <div class="logo">CraftsHub - My Orders</div>
         </div>
         <div class="user-info">
@@ -649,7 +686,8 @@ body {
     </div>
 
     <!-- Sidebar Navigation -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
+                
         <h3 class="sidebar-title"><i class="fas fa-bolt" style="color:#D9967D; margin-right:8px;"></i> Quick Actions</h3>
         <a href="/buyer/dashboard" class="sidebar-item"><span class="sidebar-icon"><i class="fas fa-home"></i></span> Dashboard</a>
         <a href="/buyer/cart" class="sidebar-item"><span class="sidebar-icon"><i class="fas fa-shopping-cart"></i></span> View Cart</a>
@@ -824,6 +862,20 @@ body {
     </div>
 
     <script>
+
+        // Sidebar hide/unhide toggle
+                function toggleSidebarVisibility() {
+                    const sidebar = document.getElementById('sidebar');
+                    sidebar.classList.toggle('sidebar-hidden');
+                }
+
+                // Optional: Hide sidebar by default on mobile
+                document.addEventListener('DOMContentLoaded', function() {
+                    if (window.innerWidth <= 768) {
+                        document.getElementById('sidebar').classList.add('sidebar-hidden');
+                    }
+                });
+                
         // Mobile sidebar toggle
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');

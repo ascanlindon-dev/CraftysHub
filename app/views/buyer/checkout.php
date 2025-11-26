@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Checkout - CraftsHub</title>
 <style>
+/* Price breakdown below quantity in order summary */
+.item-breakdown {
+    font-size: 0.92em;
+    color: #8d735c;
+    background: #f8f6f4;
+    border-radius: 6px;
+    padding: 4px 10px;
+    margin-top: 4px;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
@@ -357,12 +369,33 @@ body {
             <div class="checkout-form">
                 <form method="POST" action="/buyer/checkout">
                     <!-- Shipping Information -->
-                    <div class="form-section">
-                        <h3 class="section-title">Shipping Information</h3>
+                     <div class="form-section">
+                        <h3 class="section-title">🚚 Shipping Information</h3>
                         <div class="form-group">
                             <label class="form-label" for="shipping_address">Shipping Address *</label>
-                            <textarea class="form-textarea" id="shipping_address" name="shipping_address" required 
-                                placeholder="Enter your complete shipping address..."></textarea>
+                            <select class="form-select" id="shipping_address" name="shipping_address" required>
+                                <option value="">Select your location...</option>
+                                <option value="Baco">Baco</option>
+                                <option value="Bansud">Bansud</option>
+                                <option value="Bongabong">Bongabong</option>
+                                <option value="Bulalacao">Bulalacao</option>
+                                <option value="Calapan City">Calapan City</option>
+                                <option value="Gloria">Gloria</option>
+                                <option value="Mansalay">Mansalay</option>
+                                <option value="Naujan">Naujan</option>
+                                <option value="Pinamalayan">Pinamalayan</option>
+                                <option value="Pola">Pola</option>
+                                <option value="Puerto Galera">Puerto Galera</option>
+                                <option value="Roxas">Roxas</option>
+                                <option value="San Teodoro">San Teodoro</option>
+                                <option value="Socorro">Socorro</option>
+                                <option value="Victoria">Victoria</option>
+                                <option value="Other">Other (please specify in notes)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="order_notes">Notes / Special Instructions</label>
+                            <textarea class="form-textarea" id="order_notes" name="order_notes" placeholder="Enter any notes or special instructions for delivery..."></textarea>
                         </div>
                     </div>
 
@@ -414,8 +447,16 @@ body {
                         <div class="item-details">
                             <div class="item-name"><?= htmlspecialchars($item->product_name) ?></div>
                             <div class="item-quantity">Qty: <?= $item->quantity ?></div>
+                                <?php if($item->quantity > 1): ?>
+                                    <div class="item-price" style="margin-top:2px;">
+                                        ₱<?= number_format($item->price, 2) ?> x <?= $item->quantity ?> = ₱<?= number_format($item->price * $item->quantity, 2) ?>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="item-price" style="margin-top:2px;">
+                                        ₱<?= number_format($item->price, 2) ?>
+                                    </div>
+                                <?php endif; ?>
                         </div>
-                        <div class="item-price">₱<?= number_format($item->price * $item->quantity, 2) ?></div>
                     </div>
                 <?php endforeach; ?>
 
