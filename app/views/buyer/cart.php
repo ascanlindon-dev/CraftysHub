@@ -693,18 +693,26 @@ body {
 
     <script>
 
-        // Sidebar hide/unhide toggle
-                function toggleSidebarVisibility() {
-                    const sidebar = document.getElementById('sidebar');
-                    sidebar.classList.toggle('sidebar-hidden');
-                }
 
-                // Optional: Hide sidebar by default on mobile
-                document.addEventListener('DOMContentLoaded', function() {
-                    if (window.innerWidth <= 768) {
-                        document.getElementById('sidebar').classList.add('sidebar-hidden');
-                    }
-                });
+            // Sidebar toggle for desktop and mobile
+            function toggleSidebarVisibility() {
+                const sidebar = document.getElementById('sidebar');
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.toggle('active');
+                } else {
+                    sidebar.style.display = (sidebar.style.display === 'none') ? 'block' : 'none';
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const sidebar = document.getElementById('sidebar');
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('sidebar-hidden');
+                    sidebar.classList.remove('active');
+                } else {
+                    sidebar.style.display = 'block';
+                }
+            });
                 ù
         // Mobile sidebar toggle
         function toggleSidebar() {
