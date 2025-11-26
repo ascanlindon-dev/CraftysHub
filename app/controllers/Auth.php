@@ -80,23 +80,17 @@ class Auth extends Controller {
                         $existing_user = $this->User->get_user_by_email($email);
 
                         if (!$existing_user && $email !== 'ascanlindon@gmail.com') {
-                            // Generate OTP
-                            $otp = rand(100000, 999999);
-                            $_SESSION['registration_otp'] = $otp;
-                            $_SESSION['registration_data'] = [
+                            // Directly register user (OTP removed)
+                            $this->User->create_user([
                                 'full_name' => $full_name,
                                 'email' => $email,
                                 'phone_number' => $phone_number,
                                 'password' => $password, // In production, use password_hash($password, PASSWORD_DEFAULT)
                                 'created_at' => date('Y-m-d H:i:s')
-                            ];
-
-                            // Send OTP to email (implement email sending next)
-                            require_once __DIR__ . '/../helpers/notif_helper.php';
-                            notif_helper($email, 'Your OTP Code', "Your OTP is: $otp");
-
-                            // Redirect to OTP verification page
-                            redirect('/otp_verify');
+                            ]);
+                            $_SESSION['success_message'] = 'Account created!';
+                            header('Location: /buyer/dashboard');
+                            exit;
                         } else {
                             $_SESSION['error_message'] = 'Email already exists.';
                         }
@@ -110,30 +104,7 @@ class Auth extends Controller {
             $this->call->view('auth/signup');
     }
 
-    /** 🔐 OTP Verification */
-    public function verifyOtp() {
-        $error = '';
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $otp = $_POST['otp_code'] ?? '';
-            // Example OTP validation using session
-            if (isset($_SESSION['registration_otp']) && $otp == $_SESSION['registration_otp']) {
-                // Registration data is valid, save user to database
-                $data = $_SESSION['registration_data'] ?? [];
-                if (!empty($data)) {
-                    $this->User->create_user($data);
-                    unset($_SESSION['registration_otp'], $_SESSION['registration_data']);
-                    $_SESSION['success_message'] = 'Account verified and created!';
-                    header('Location: /buyer/dashboard');
-                    exit;
-                } else {
-                    $error = 'Registration data missing.';
-                }
-            } else {
-                $error = 'Invalid verification code.';
-            }
-        }
-        include __DIR__ . '/../views/auth/otp_verify.php';
-    }
+    // OTP verification removed
 
     /** 🚪 Logout */
     public function logout() {
