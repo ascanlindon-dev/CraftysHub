@@ -21,7 +21,7 @@ input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 5px rgba(102
 <body>
 <div class="otp-container">
     <div class="logo">
-        <h1>🔒 CraftsHub</h1>
+        <h1>🔒 CraftsyHub</h1>
         <p>OTP Verification</p>
     </div>
     <?php if(isset($_SESSION['error_message'])): ?>

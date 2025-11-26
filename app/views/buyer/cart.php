@@ -7,14 +7,14 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: "Poppins", sans-serif; 
-    background: #f8f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+    background: #faf9f7;
     overflow-x: hidden;
 }
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
     color: white;
     padding: 20px;
     display: flex;
@@ -57,8 +57,8 @@ body {
     padding: 0 20px 15px;
     font-size: 1.1em;
     font-weight: 600;
-    color: #495057;
-    border-bottom: 1px solid #dee2e6;
+    color: #2D2D2D;
+    border-bottom: 1px solid #f0ede8;
     margin-bottom: 15px;
 }
 
@@ -76,7 +76,7 @@ body {
 
 .sidebar-icon {
     background: #fff;
-    color: #667eea;
+    color: #D9967D;
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -85,16 +85,16 @@ body {
     justify-content: center;
     font-size: 1.4em;
     box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-    border: 2px solid #eee;
+    border: 2px solid #E8D4C8;
     transition: box-shadow 0.2s;
 }
 
 .sidebar-item:hover .sidebar-icon,
 .sidebar-item.active .sidebar-icon {
-    box-shadow: 0 4px 12px rgba(102,126,234,0.13);
+    box-shadow: 0 4px 12px rgba(217, 150, 125, 0.2);
     color: #fff;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-color: #667eea;
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
+    border-color: #D9967D;
 }
 
 /* Mobile menu toggle */
@@ -121,7 +121,7 @@ body {
 }
 .page-title {
     font-size: 2.5em;
-    color: #333;
+    color: #2D2D2D;
     font-weight: 600;
 }
 
@@ -135,14 +135,14 @@ body {
     gap: 10px;
 }
 .alert-success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #86efac;
 }
 .alert-error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
 }
 
 /* Cart Items */
@@ -154,153 +154,222 @@ body {
 
 .cart-items {
     background: white;
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* Select All Header */
+.cart-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0ede8;
+    background: #faf9f7;
+}
+
+.select-all-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.select-all-wrapper input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #D9967D;
+}
+
+.select-all-label {
+    font-weight: 600;
+    color: #2D2D2D;
+    cursor: pointer;
 }
 
 .cart-item {
     display: flex;
     align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #eee;
+    padding: 20px 25px;
+    border-bottom: 1px solid #f5f0eb;
+    gap: 15px;
 }
 .cart-item:last-child {
     border-bottom: none;
 }
 
+.item-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #D9967D;
+}
+
 .item-image {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #E8A89B, #D9967D);
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.5em;
-    margin-right: 20px;
+    font-size: 2em;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .item-details {
     flex: 1;
 }
 .item-name {
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 600;
-    color: #333;
-    margin-bottom: 5px;
+    color: #2D2D2D;
+    margin-bottom: 8px;
 }
 .item-price {
-    color: #667eea;
-    font-weight: 500;
+    color: #D9967D;
+    font-weight: 600;
+    font-size: 1.1em;
 }
 
 .quantity-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin: 0 20px;
+    gap: 8px;
+    border: 1px solid #E8D4C8;
+    border-radius: 6px;
+    padding: 4px;
+    background: #faf9f7;
 }
+
 .quantity-btn {
-    width: 35px;
-    height: 35px;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 5px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: #C88A6F;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: all 0.2s;
+    border-radius: 4px;
 }
+
 .quantity-btn:hover {
-    background: #667eea;
-    color: white;
-    border-color: #667eea;
+    background: #fff;
+    color: #D9967D;
 }
-.quantity-input {
-    width: 60px;
+
+.quantity-display {
+    width: 45px;
     text-align: center;
-    border: 1px solid #ddd;
-    padding: 8px;
-    border-radius: 5px;
+    font-weight: 600;
+    color: #2D2D2D;
+    padding: 0 4px;
+}
+
+.item-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
 }
 
 .item-total {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: 600;
-    color: #333;
-    margin-right: 15px;
+    color: #2D2D2D;
 }
 
 .remove-btn {
-    background: #dc3545;
-    color: white;
+    background: transparent;
+    color: #DC3545;
     border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
+    padding: 6px 12px;
     cursor: pointer;
     transition: all 0.3s;
+    font-size: 0.9em;
+    font-weight: 500;
 }
 .remove-btn:hover {
-    background: #c82333;
+    color: #A91E2C;
+    background: #fef2f2;
+    border-radius: 4px;
 }
 
 /* Cart Summary */
 .cart-summary {
     background: white;
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     height: fit-content;
+    position: sticky;
+    top: 20px;
 }
+
 .summary-title {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f5f0eb;
 }
+
 .summary-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 12px;
+    color: #666;
 }
-.summary-row:last-child {
-    border-bottom: none;
-    font-size: 1.2em;
-    font-weight: 600;
-    color: #333;
+
+.summary-row.total {
+    border-top: 1px solid #f5f0eb;
+    padding-top: 15px;
+    margin-top: 15px;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #2D2D2D;
 }
+
 .checkout-btn {
     width: 100%;
-    padding: 15px;
-    background: #667eea;
+    padding: 14px;
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
     color: white;
     border: none;
-    border-radius: 10px;
-    font-size: 1.1em;
+    border-radius: 8px;
+    font-size: 1em;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
     margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(200, 138, 111, 0.2);
 }
 .checkout-btn:hover {
-    background: #5a67d8;
+    background: linear-gradient(135deg, #CE8A74 0%, #BD7E63 100%);
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(200, 138, 111, 0.3);
 }
 
 /* Empty State */
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #666;
+    color: #777;
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 .empty-state .icon {
     font-size: 4em;
@@ -310,64 +379,67 @@ body {
 .empty-state .btn {
     margin-top: 20px;
     padding: 12px 24px;
-    background: #667eea;
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
     color: white;
     text-decoration: none;
     border-radius: 8px;
     display: inline-block;
     transition: all 0.3s;
+    font-weight: 600;
 }
 .empty-state .btn:hover {
-    background: #5a67d8;
+    background: linear-gradient(135deg, #CE8A74 0%, #BD7E63 100%);
     color: white;
+    transform: translateY(-2px);
 }
-/* Account Dropdown */
-    .account-dropdown {
-        position: relative;
-        display: inline-block;
-    }
-    .account-logo {
-        background: #fff !important;
-        color: #333 !important;
-        border-radius: 50%;
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2em;
-        cursor: pointer;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        border: 2px solid #eee;
-        transition: box-shadow 0.2s;
-    }
-    .account-logo:hover {
-        box-shadow: 0 4px 12px rgba(102,126,234,0.15);
-    }
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        right: 0;
-        top: 50px;
-        background: white;
-        min-width: 180px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-        border-radius: 10px;
-        z-index: 200;
-        overflow: hidden;
-    }
-    .dropdown-item {
-        display: block;
-        padding: 15px 20px;
-        color: #333;
-        text-decoration: none;
-        transition: background 0.2s;
-    }
-    .dropdown-item:hover {
-        background: #f8f9fa;
-        color: #667eea;
-    }
 
+/* Account Dropdown */
+.account-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.account-logo {
+    background: #fff !important;
+    color: #2D2D2D !important;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border: 2px solid #E8D4C8;
+    transition: box-shadow 0.2s;
+}
+.account-logo:hover {
+    box-shadow: 0 4px 12px rgba(217, 150, 125, 0.2);
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: white;
+    min-width: 180px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border-radius: 8px;
+    z-index: 200;
+    overflow: hidden;
+    border: 1px solid #E8D4C8;
+}
+.dropdown-item {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.dropdown-item:hover {
+    background: #faf9f7;
+    color: #D9967D;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -388,12 +460,16 @@ body {
         gap: 20px;
     }
     .cart-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
+        flex-wrap: wrap;
+        gap: 10px;
     }
-    .quantity-controls {
-        margin: 0;
+    .item-actions {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .cart-summary {
+        position: static;
     }
 }
 </style>
@@ -402,17 +478,17 @@ body {
     <!-- Header -->
     <div class="header">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-            <div class="logo">🛍️ CraftsHub - My Cart</div>
+            <button class="menu-toggle" onclick="toggleSidebar()" style="font-size: 1.2em; font-weight: 600;">☰</button>
+            <div class="logo">CraftsHub - My Cart</div>
         </div>
         <div class="user-info">
                 <span>Welcome, <?= htmlspecialchars($buyer_name) ?>!</span>
                 <div class="account-dropdown">
-                    <span class="account-logo" onclick="toggleAccountMenu()">👤</span>
+                    <span class="account-logo" onclick="toggleAccountMenu()" style="font-size: 1.4em;">👤</span>
                     <div class="dropdown-menu" id="accountMenu">
-                        <a href="/buyer/account-settings" class="dropdown-item">⚙️ Account Settings</a>
-                        <a href="/buyer/customer-service" class="dropdown-item">💬 Customer Service</a>
-                        <a href="/buyer/logout" class="dropdown-item">🚪 Logout</a>
+                        <a href="/buyer/account-settings" class="dropdown-item">Account Settings</a>
+                        <a href="/buyer/customer-service" class="dropdown-item">Customer Service</a>
+                        <a href="/buyer/logout" class="dropdown-item">Logout</a>
                     </div>
                 </div>
         </div>
@@ -435,30 +511,29 @@ body {
 
     <!-- Sidebar Navigation -->
     <div class="sidebar">
-        <h3 class="sidebar-title">🚀 Quick Actions</h3>
-        <a href="/buyer/dashboard" class="sidebar-item"><span class="sidebar-icon">🏠</span> Dashboard</a>
+        <h3 class="sidebar-title">Quick Actions</h3>
+        <a href="/buyer/dashboard" class="sidebar-item"><span class="sidebar-icon">⌂</span> Dashboard</a>
         <a href="/buyer/cart" class="sidebar-item active"><span class="sidebar-icon">🛒</span> View Cart</a>
         <a href="/buyer/orders" class="sidebar-item"><span class="sidebar-icon">📦</span> View My Orders</a>
-
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <div class="page-header">
-            <h1 class="page-title">🛒 My Cart</h1>
+            <h1 class="page-title">Shopping Cart</h1>
         </div>
 
         <!-- Success/Error Messages -->
         <?php if(isset($_SESSION['success_message'])): ?>
             <div class="alert alert-success">
-                ✅ <?= $_SESSION['success_message']; ?>
+                ✓ <?= $_SESSION['success_message']; ?>
             </div>
             <?php unset($_SESSION['success_message']); ?>
         <?php endif; ?>
 
         <?php if(isset($_SESSION['error_message'])): ?>
             <div class="alert alert-error">
-                ❌ <?= $_SESSION['error_message']; ?>
+                ✗ <?= $_SESSION['error_message']; ?>
             </div>
             <?php unset($_SESSION['error_message']); ?>
         <?php endif; ?>
@@ -467,75 +542,86 @@ body {
             <div class="cart-container">
                 <!-- Cart Items -->
                 <div class="cart-items">
-                    <?php foreach($cart_items as $item): ?>
-                        <div class="cart-item">
-                            <div class="item-image">
-                <?php if(!empty($item->image_url)): ?>
-                    <img src="<?= htmlspecialchars($item->image_url) ?>" alt="<?= htmlspecialchars($item->product_name) ?>" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
-                <?php else: ?>
-                    🎨
-                <?php endif; ?>
-            </div>
-                            <div class="item-details">
-                                <div class="item-name"><?= htmlspecialchars($item->product_name) ?></div>
-                                <div class="item-price">$<?= number_format($item->price, 2) ?> each</div>
-                            </div>
-                            <div class="quantity-controls">
-                                <form method="POST" action="/buyer/update-cart" style="display: inline;">
-                                    <input type="hidden" name="cart_id" value="<?= $item->cart_id ?>">
-                                    <input type="hidden" name="quantity" value="<?= max(1, $item->quantity - 1) ?>">
-                                    <button type="submit" class="quantity-btn">-</button>
-                                </form>
-                                <input type="text" class="quantity-input" value="<?= $item->quantity ?>" readonly>
-                                <form method="POST" action="/buyer/update-cart" style="display: inline;">
-                                    <input type="hidden" name="cart_id" value="<?= $item->cart_id ?>">
-                                    <input type="hidden" name="quantity" value="<?= $item->quantity + 1 ?>">
-                                    <button type="submit" class="quantity-btn">+</button>
-                                </form>
-                            </div>
-                            <div class="item-total">₱<?= number_format($item->price * $item->quantity, 2) ?></div>
-                            <form method="POST" action="/buyer/remove-from-cart" style="display: inline;" onsubmit="return showRemoveCartPopup(event, <?= $item->cart_id ?>)">
-                                <input type="hidden" name="cart_id" value="<?= $item->cart_id ?>">
-                                <button type="submit" class="remove-btn">🗑️</button>
-                            </form>
+                    <!-- Select All Header -->
+                    <div class="cart-header">
+                        <div class="select-all-wrapper">
+                            <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll(this)">
+                            <label class="select-all-label" for="selectAllCheckbox">Select All</label>
                         </div>
-                            <!-- Remove from Cart Popup Overlay -->
-                            <div id="removeCartOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:transparent; z-index:9999;">
-                                <div id="removeCartPopup" style="position:absolute; left:50%; top:20%; transform:translate(-50%,0); background:#fff; padding:32px; border-radius:10px; max-width:350px; width:90vw; box-shadow:0 4px 24px rgba(0,0,0,0.18); display:flex; flex-direction:column; align-items:center;">
-                                    <span onclick="closeRemoveCartOverlay()" style="position:absolute; top:10px; right:16px; cursor:pointer; font-size:24px;">&times;</span>
-                                    <h3 style="margin-bottom:18px;">Remove Item</h3>
-                                    <div style="margin-bottom:18px; text-align:center;">Are you sure you want to remove this item from your cart?</div>
-                                    <form id="removeCartForm" method="POST" action="/buyer/remove-from-cart" style="width:100%; display:flex; flex-direction:column; align-items:center;">
-                                        <input type="hidden" id="removeCartId" name="cart_id">
-                                        <button type="submit" style="background:#dc3545; color:#fff; padding:8px 20px; border:none; border-radius:5px; margin-bottom:10px;">Yes, Remove</button>
-                                        <button type="button" onclick="closeRemoveCartOverlay()" style="background:#eee; color:#333; border:none; padding:8px 20px; border-radius:5px;">Cancel</button>
-                                    </form>
+                        <span style="color: #777; font-size: 0.9em;">
+                            <span id="selectedCount">0</span> selected
+                        </span>
+                    </div>
+
+                    <!-- Cart Items List -->
+                    <form id="cartForm">
+                        <?php foreach($cart_items as $item): ?>
+                            <div class="cart-item" data-cart-id="<?= $item->cart_id ?>" data-price="<?= $item->price ?>">
+                                <!-- Checkbox -->
+                                <input type="checkbox" class="item-checkbox" value="<?= $item->cart_id ?>" onchange="updateTotals()">
+                                
+                                <!-- Image -->
+                                <div class="item-image">
+                                    <?php if(!empty($item->image_url)): ?>
+                                        <img src="<?= htmlspecialchars($item->image_url) ?>" alt="<?= htmlspecialchars($item->product_name) ?>" style="width: 100%; height: 100%; object-fit: cover;">
+                                    <?php else: ?>
+                                        🎨
+                                    <?php endif; ?>
+                                </div>
+                                
+                                <!-- Details -->
+                                <div class="item-details">
+                                    <div class="item-name"><?= htmlspecialchars($item->product_name) ?></div>
+                                    <div class="item-price">₱<?= number_format($item->price, 2) ?> each</div>
+                                </div>
+                                
+                                <!-- Quantity Controls -->
+                                <div class="quantity-controls">
+                                    <button type="button" class="quantity-btn" onclick="decrementQuantity(this)">−</button>
+                                    <div class="quantity-display" data-quantity="<?= $item->quantity ?>">
+                                        <input type="hidden" name="quantity[<?= $item->cart_id ?>]" value="<?= $item->quantity ?>">
+                                        <?= $item->quantity ?>
+                                    </div>
+                                    <button type="button" class="quantity-btn" onclick="incrementQuantity(this)">+</button>
+                                </div>
+                                
+                                <!-- Item Total -->
+                                <div class="item-actions">
+                                    <div class="item-total" data-base-price="<?= $item->price ?>" data-quantity="<?= $item->quantity ?>">
+                                        ₱<?= number_format($item->price * $item->quantity, 2) ?>
+                                    </div>
+                                    <button type="button" class="remove-btn" onclick="removeCartItem(<?= $item->cart_id ?>)">Remove</button>
                                 </div>
                             </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </form>
                 </div>
 
                 <!-- Cart Summary -->
                 <div class="cart-summary">
                     <h3 class="summary-title">Order Summary</h3>
                     <div class="summary-row">
+                        <span>Items Selected:</span>
+                        <span id="selectedItems">0</span>
+                    </div>
+                    <div class="summary-row">
                         <span>Subtotal:</span>
-                        <span>₱<?= number_format($cart_total, 2) ?></span>
+                        <span id="summarySubtotal">₱0.00</span>
                     </div>
                     <div class="summary-row">
                         <span>Shipping:</span>
                         <span>Free</span>
                     </div>
-                    <div class="summary-row">
+                    <div class="summary-row total">
                         <span>Total:</span>
-                        <span>₱<?= number_format($cart_total, 2) ?></span>
+                        <span id="summaryTotal">₱0.00</span>
                     </div>
-                    <a href="/buyer/checkout" class="checkout-btn" style="text-decoration: none; display: block; text-align: center;">
-                        💳 Proceed to Checkout
-                    </a>
+                    <button class="checkout-btn" id="checkoutBtn" onclick="proceedToCheckout()" style="text-decoration: none; text-align: center;">
+                        Proceed to Checkout
+                    </button>
                     <div style="text-align: center; margin-top: 15px;">
-                        <a href="/buyer/dashboard" style="color: #667eea; text-decoration: none;">
-                            🛍️ Continue Shopping
+                        <a href="/buyer/dashboard" style="color: #D9967D; text-decoration: none; font-weight: 500;">
+                            Continue Shopping
                         </a>
                     </div>
                 </div>
@@ -545,7 +631,7 @@ body {
                 <div class="icon">🛒</div>
                 <h3>Your cart is empty</h3>
                 <p>Add some products to your cart to get started!</p>
-                <a href="/buyer/dashboard" class="btn">🛍️ Start Shopping</a>
+                <a href="/buyer/dashboard" class="btn">Start Shopping</a>
             </div>
         <?php endif; ?>
     </div>
@@ -569,19 +655,134 @@ body {
                 sidebar.classList.remove('active');
             }
         });
-        // Remove from cart popup logic
-        function showRemoveCartPopup(event, cartId) {
-            event.preventDefault();
-            document.getElementById('removeCartId').value = cartId;
-            document.getElementById('removeCartOverlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-            return false;
+
+        // Toggle all checkboxes when "Select All" is clicked
+        function toggleSelectAll(checkbox) {
+            const itemCheckboxes = document.querySelectorAll('.item-checkbox');
+            itemCheckboxes.forEach(cb => cb.checked = checkbox.checked);
+            updateTotals();
         }
 
-        function closeRemoveCartOverlay() {
-            document.getElementById('removeCartOverlay').style.display = 'none';
-            document.body.style.overflow = 'auto';
+        // Update totals when selection changes
+        function updateTotals() {
+            const itemCheckboxes = document.querySelectorAll('.item-checkbox');
+            const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+            let selectedCount = 0;
+            let selectedTotal = 0;
+
+            itemCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedCount++;
+                    const cartItem = checkbox.closest('.cart-item');
+                    const quantityDisplay = cartItem.querySelector('.quantity-display');
+                    const basePrice = parseFloat(cartItem.getAttribute('data-price'));
+                    const quantity = parseInt(quantityDisplay.textContent);
+                    selectedTotal += basePrice * quantity;
+                }
+            });
+
+            // Update select all checkbox state
+            selectAllCheckbox.checked = selectedCount === itemCheckboxes.length && itemCheckboxes.length > 0;
+
+            // Update display
+            document.getElementById('selectedCount').textContent = selectedCount;
+            document.getElementById('selectedItems').textContent = selectedCount;
+            document.getElementById('summarySubtotal').textContent = '₱' + selectedTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('summaryTotal').textContent = '₱' + selectedTotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            
+            // Disable checkout button if no items selected
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            checkoutBtn.disabled = selectedCount === 0;
+            checkoutBtn.style.opacity = selectedCount === 0 ? '0.5' : '1';
+            checkoutBtn.style.cursor = selectedCount === 0 ? 'not-allowed' : 'pointer';
         }
+
+        // Increment quantity
+        function incrementQuantity(btn) {
+            const cartItem = btn.closest('.cart-item');
+            const quantityDisplay = cartItem.querySelector('.quantity-display');
+            const quantityInput = cartItem.querySelector('input[name^="quantity"]');
+            let quantity = parseInt(quantityDisplay.textContent);
+            quantity++;
+            quantityDisplay.textContent = quantity;
+            quantityInput.value = quantity;
+            updateItemTotal(cartItem);
+            updateTotals();
+        }
+
+        // Decrement quantity
+        function decrementQuantity(btn) {
+            const cartItem = btn.closest('.cart-item');
+            const quantityDisplay = cartItem.querySelector('.quantity-display');
+            const quantityInput = cartItem.querySelector('input[name^="quantity"]');
+            let quantity = parseInt(quantityDisplay.textContent);
+            if (quantity > 1) {
+                quantity--;
+                quantityDisplay.textContent = quantity;
+                quantityInput.value = quantity;
+                updateItemTotal(cartItem);
+                updateTotals();
+            }
+        }
+
+        // Update item total price
+        function updateItemTotal(cartItem) {
+            const basePrice = parseFloat(cartItem.getAttribute('data-price'));
+            const quantityDisplay = cartItem.querySelector('.quantity-display');
+            const itemTotalDiv = cartItem.querySelector('.item-total');
+            const quantity = parseInt(quantityDisplay.textContent);
+            const total = basePrice * quantity;
+            itemTotalDiv.textContent = '₱' + total.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        // Remove item from cart
+        function removeCartItem(cartId) {
+            if (confirm('Remove this item from your cart?')) {
+                // Create a form and submit it
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '/buyer/remove-from-cart';
+                form.innerHTML = '<input type="hidden" name="cart_id" value="' + cartId + '">';
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+
+        // Proceed to checkout with selected items
+        function proceedToCheckout() {
+            const selectedCheckboxes = document.querySelectorAll('.item-checkbox:checked');
+            
+            if (selectedCheckboxes.length === 0) {
+                alert('Please select at least one item to proceed');
+                return;
+            }
+
+            // Create hidden form with selected items
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/buyer/checkout';
+            
+            selectedCheckboxes.forEach(checkbox => {
+                const cartItem = checkbox.closest('.cart-item');
+                const cartId = checkbox.value;
+                const quantityDisplay = cartItem.querySelector('.quantity-display');
+                const quantity = quantityDisplay.textContent;
+                
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'items[' + cartId + ']';
+                input.value = quantity;
+                form.appendChild(input);
+            });
+            
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        // Initialize totals on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateTotals();
+        });
     </script>
 </body>
 </html>

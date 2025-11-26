@@ -5,26 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Revenue Management - Admin</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* ==== GLOBAL STYLES ==== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
-      background-color: #f5f6fa;
+      background-color: #faf9f7;
       display: flex;
       height: 100vh;
-      color: #333;
+      color: #2D2D2D;
     }
 
     /* ==== SIDEBAR ==== */
     .sidebar {
       width: 240px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -103,12 +104,12 @@
 
     /* ==== HEADER ==== */
     .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       color: #fff;
       padding: 20px 30px;
       border-radius: 10px;
       margin-bottom: 30px;
-      box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+      box-shadow: 0 5px 15px rgba(217,150,125,0.4);
     }
 
     .header h1 {
@@ -144,20 +145,20 @@
       transform: translateY(-5px);
     }
 
-    .stat-card.success { border-color: #2ecc71; }
-    .stat-card.info { border-color: #3498db; }
-    .stat-card.warning { border-color: #f39c12; }
+    .stat-card.success { border-color: #D9967D; }
+    .stat-card.info { border-color: #C88A6F; }
+    .stat-card.warning { border-color: #E8D4C8; }
     .stat-card.danger { border-color: #e74c3c; }
 
     .stat-number {
       font-size: 2.5rem;
       font-weight: bold;
-      color: #2c3e50;
+      color: #2D2D2D;
       margin-bottom: 10px;
     }
 
     .stat-label {
-      color: #7f8c8d;
+      color: #777;
       font-size: 1rem;
       font-weight: 500;
     }
@@ -170,7 +171,7 @@
       border-left: 4px solid;
     }
 
-    .alert-success { background: #d5f4e6; color: #2ecc71; border-color: #2ecc71; }
+    .alert-success { background: #E8D4C8; color: #D9967D; border-color: #D9967D; }
     .alert-error { background: #f8d7da; color: #e74c3c; border-color: #e74c3c; }
 
     /* ==== TABLE ==== */
@@ -183,7 +184,7 @@
     }
 
     .section-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       color: #fff;
       padding: 15px 20px;
       font-weight: 600;
@@ -209,15 +210,15 @@
     }
 
     th {
-      background: #f8f9fa;
+      background: #faf9f7;
       font-weight: 600;
-      color: #2c3e50;
+      color: #2D2D2D;
       position: sticky;
       top: 0;
       z-index: 10;
     }
 
-    tr:hover { background: #f8f9fa; }
+    tr:hover { background: #faf9f7; }
 
     .btn {
       padding: 10px 20px;
@@ -233,8 +234,8 @@
       transition: all 0.3s ease;
     }
 
-    .btn-primary { background: #3498db; color: #fff; }
-    .btn-primary:hover { background: #2980b9; transform: translateY(-2px); }
+    .btn-primary { background: #D9967D; color: #fff; }
+    .btn-primary:hover { background: #C88A6F; transform: translateY(-2px); }
 
     .btn-success { background: #2ecc71; color: #fff; }
     .btn-success:hover { background: #27ae60; }
@@ -255,52 +256,51 @@
     <div>
       <h2>CraftsHub Admin</h2>
       <ul>
-        <li><a href="/admin/dashboard">📊 Dashboard</a></li>
-        <li><a href="/admin/products">📦 Products</a></li>
-        <li><a href="/admin/inventory">📋 Inventory</a></li>
-        <li><a href="/admin/orders">🛒 Orders</a></li>
-        <li><a href="/admin/users">👥 Users</a></li>
-        
-        <li class="active"><a href="/admin/revenue">💰 Revenue</a></li>
-        <li><a href="/admin/settings">⚙️ Settings</a></li>
+        <li><a href="/admin/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="/admin/products"><i class="fas fa-box"></i> Products</a></li>
+        <li><a href="/admin/inventory"><i class="fas fa-list"></i> Inventory</a></li>
+        <li><a href="/admin/orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+        <li><a href="/admin/users"><i class="fas fa-users"></i> Users</a></li>
+        <li class="active"><a href="/admin/revenue"><i class="fas fa-chart-bar"></i> Revenue</a></li>
+        <li><a href="/admin/settings"><i class="fas fa-cog"></i> Settings</a></li>
       </ul>
     </div>
     <div class="logout-section">
-      <a href="/admin/logout" class="logout-btn">🚪 Logout</a>
+      <a href="/admin/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
   </div>
 
   <div class="main-content">
     <!-- Header -->
     <div class="header">
-      <h1>💰 Revenue Management</h1>
+      <h1><i class="fas fa-chart-bar"></i> Revenue Management</h1>
       <p>Track daily, weekly, monthly, and total revenue</p>
     </div>
 
     <!-- Alerts -->
     <?php if(isset($_SESSION['success_message'])): ?>
-      <div class="alert alert-success"><?= $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
+      <div class="alert alert-success"><i class="fas fa-check-circle"></i> <?= $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
     <?php endif; ?>
     <?php if(isset($_SESSION['error_message'])): ?>
-      <div class="alert alert-error"><?= $_SESSION['error_message']; unset($_SESSION['error_message']); ?></div>
+      <div class="alert alert-error"><i class="fas fa-times-circle"></i> <?= $_SESSION['error_message']; unset($_SESSION['error_message']); ?></div>
     <?php endif; ?>
 
     <!-- Revenue Stats Cards -->
     <div class="stats-grid">
       <div class="stat-card success">
-        <div class="stat-number">₱<?= isset($today_revenue) ? $today_revenue : '0.00' ?></div>
+        <div class="stat-number"><i class="fas fa-money-bill-wave"></i> ₱<?= isset($today_revenue) ? $today_revenue : '0.00' ?></div>
         <div class="stat-label">Today's Revenue</div>
       </div>
       <div class="stat-card info">
-        <div class="stat-number">₱<?= isset($weekly_revenue) ? $weekly_revenue : '0.00' ?></div>
+        <div class="stat-number"><i class="fas fa-calendar-week"></i> ₱<?= isset($weekly_revenue) ? $weekly_revenue : '0.00' ?></div>
         <div class="stat-label">Weekly Revenue</div>
       </div>
       <div class="stat-card warning">
-        <div class="stat-number">₱<?= isset($monthly_revenue) ? $monthly_revenue : '0.00' ?></div>
+        <div class="stat-number"><i class="fas fa-calendar-alt"></i> ₱<?= isset($monthly_revenue) ? $monthly_revenue : '0.00' ?></div>
         <div class="stat-label">Monthly Revenue</div>
       </div>
       <div class="stat-card danger">
-        <div class="stat-number">₱<?= isset($total_revenue) ? $total_revenue : '0.00' ?></div>
+        <div class="stat-number"><i class="fas fa-coins"></i> ₱<?= isset($total_revenue) ? $total_revenue : '0.00' ?></div>
         <div class="stat-label">Total Revenue</div>
       </div>
     </div>
@@ -308,18 +308,18 @@
     <!-- Sync Section -->
     <div class="table-section">
       <div class="section-header">
-        ⚡ Data Synchronization
+        <i class="fas fa-bolt"></i> Data Synchronization
       </div>
       <div style="padding: 20px;">
         <p>Sync revenue data from orders to keep your tracking up to date.</p>
-        <a href="/admin/sync-revenue" class="btn btn-success">🔄 Sync Revenue Data</a>
-        <a href="/admin/dashboard" class="btn btn-primary">← Back to Dashboard</a>
+        <a href="/admin/sync-revenue" class="btn btn-success"><i class="fas fa-sync-alt"></i> Sync Revenue Data</a>
+        <a href="/admin/dashboard" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
       </div>
     </div>
 
     <!-- Revenue Charts Section -->
     <div class="table-section">
-      <div class="section-header">📈 Revenue Charts</div>
+      <div class="section-header"><i class="fas fa-chart-line"></i> Revenue Charts</div>
       <div style="padding: 30px; display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
         <div style="flex:1; min-width:300px; max-width:500px;">
           <h3 style="text-align:center;">Daily Revenue (Bar)</h3>
@@ -338,7 +338,7 @@
 
     <!-- Top Revenue Days Table -->
     <div class="table-section">
-      <div class="section-header">🏆 Top Revenue Days</div>
+      <div class="section-header"><i class="fas fa-trophy"></i> Top Revenue Days</div>
       <div class="table-container">
         <table>
           <thead>

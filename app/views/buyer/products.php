@@ -7,14 +7,14 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: "Poppins", sans-serif; 
-    background: #f8f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    background: #faf9f7;
     overflow-x: hidden;
 }
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
     color: white;
     padding: 20px;
     display: flex;
@@ -51,17 +51,17 @@ body {
 .sidebar-title {
     font-size: 1.2em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
     margin: 0 25px 20px 25px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0ede8;
 }
 .sidebar-item {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 15px 25px;
-    color: #333;
+    color: #2D2D2D;
     text-decoration: none;
     transition: all 0.3s;
     border-left: 3px solid transparent;
@@ -69,7 +69,7 @@ body {
 }
 .sidebar-icon {
     background: #fff;
-    color: #667eea;
+    color: #D9967D;
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -78,15 +78,15 @@ body {
     justify-content: center;
     font-size: 1.4em;
     box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-    border: 2px solid #eee;
+    border: 2px solid #E8D4C8;
     transition: box-shadow 0.2s;
 }
 .sidebar-item:hover .sidebar-icon,
 .sidebar-item.active .sidebar-icon {
-    box-shadow: 0 4px 12px rgba(102,126,234,0.13);
+    box-shadow: 0 4px 12px rgba(217,150,125,0.13);
     color: #fff;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-color: #667eea;
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
+    border-color: #D9967D;
 }
 
 /* Main Content */
@@ -115,17 +115,17 @@ body {
     width: 100%;
     padding: 15px 20px;
     font-size: 16px;
-    border: 2px solid #e9ecef;
+    border: 2px solid #E8D4C8;
     border-radius: 50px;
     outline: none;
     transition: all 0.3s;
-    background: #f8f9fa;
+    background: #faf9f7;
 }
 
 .search-input:focus {
-    border-color: #667eea;
+    border-color: #D9967D;
     background: white;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 0 3px rgba(217, 150, 125, 0.1);
 }
 
 .clear-btn {
@@ -179,7 +179,7 @@ body {
 .product-image {
     width: 100%;
     height: 180px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #D9967D, #C88A6F);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,13 +194,13 @@ body {
 .product-name {
     font-size: 1.2em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
     margin-bottom: 8px;
 }
 .product-price {
     font-size: 1.3em;
     font-weight: bold;
-    color: #667eea;
+    color: #D9967D;
     margin-bottom: 10px;
 }
 .product-stock {
@@ -214,7 +214,7 @@ body {
 .add-to-cart-btn {
     width: 100%;
     padding: 10px;
-    background: #667eea;
+    background: #D9967D;
     color: white;
     border: none;
     border-radius: 8px;
@@ -224,7 +224,7 @@ body {
     transition: all 0.3s;
 }
 .add-to-cart-btn:hover {
-    background: #5a67d8;
+    background: #C88A6F;
 }
 .add-to-cart-btn:disabled {
     background: #ccc;
@@ -234,7 +234,7 @@ body {
 .buy-now-btn {
     width: 100%;
     padding: 10px;
-    background: linear-gradient(135deg, #28a745, #20c997);
+    background: linear-gradient(135deg, #D9967D, #C88A6F);
     color: white;
     border: none;
     border-radius: 8px;
@@ -242,12 +242,12 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    box-shadow: 0 2px 8px rgba(217, 150, 125, 0.3);
 }
 .buy-now-btn:hover {
-    background: linear-gradient(135deg, #218838, #1ea080);
+    background: linear-gradient(135deg, #C88A6F, #B87960);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+    box-shadow: 0 4px 12px rgba(217, 150, 125, 0.4);
 }
 
 /* Account Dropdown */
@@ -257,7 +257,7 @@ body {
     }
     .account-logo {
         background: #fff !important;
-        color: #333 !important;
+        color: #2D2D2D !important;
         border-radius: 50%;
         width: 44px;
         height: 44px;
@@ -267,11 +267,11 @@ body {
         font-size: 2em;
         cursor: pointer;
         box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        border: 2px solid #eee;
+        border: 2px solid #E8D4C8;
         transition: box-shadow 0.2s;
     }
     .account-logo:hover {
-        box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+        box-shadow: 0 4px 12px rgba(217,150,125,0.15);
     }
     .dropdown-menu {
         display: none;
@@ -288,13 +288,13 @@ body {
     .dropdown-item {
         display: block;
         padding: 15px 20px;
-        color: #333;
+        color: #2D2D2D;
         text-decoration: none;
         transition: background 0.2s;
     }
     .dropdown-item:hover {
-        background: #f8f9fa;
-        color: #667eea;
+        background: #faf9f7;
+        color: #D9967D;
     }
 
 
@@ -321,16 +321,16 @@ body {
     <div class="header">
         <div class="logo">
             <button class="menu-toggle" onclick="toggleSidebar()" style="display: none; background: none; border: none; color: white; font-size: 1.5em; margin-right: 10px; cursor: pointer;">☰</button>
-            🛍️ CraftsHub - Browse Products
+            CraftsHub - Browse Products
         </div>
         <div class="user-info">
                 <span>Welcome, <?= htmlspecialchars($buyer_name) ?>!</span>
                 <div class="account-dropdown">
-                    <span class="account-logo" onclick="toggleAccountMenu()">👤</span>
+                    <span class="account-logo" onclick="toggleAccountMenu()">A</span>
                     <div class="dropdown-menu" id="accountMenu">
-                        <a href="/buyer/account-settings" class="dropdown-item">⚙️ Account Settings</a>
-                        <a href="/buyer/customer-service" class="dropdown-item">💬 Customer Service</a>
-                        <a href="/buyer/logout" class="dropdown-item">🚪 Logout</a>
+                        <a href="/buyer/account-settings" class="dropdown-item">Account Settings</a>
+                        <a href="/buyer/customer-service" class="dropdown-item">Customer Service</a>
+                        <a href="/buyer/logout" class="dropdown-item">Logout</a>
                     </div>
                 </div>
         </div>
@@ -352,11 +352,12 @@ body {
     </div>
 
     <!-- Sidebar Navigation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <div class="sidebar">
-        <h3 class="sidebar-title">🚀 Quick Actions</h3>
-        <a href="/buyer/dashboard" class="sidebar-item"><span class="sidebar-icon">🏠</span> Dashboard</a>
-        <a href="/buyer/cart" class="sidebar-item"><span class="sidebar-icon">🛒</span> View Cart</a>
-        <a href="/buyer/orders" class="sidebar-item"><span class="sidebar-icon">📦</span> View My Orders</a>
+        <h3 class="sidebar-title"><i class="fas fa-bolt" style="color:#D9967D; margin-right:8px;"></i> Quick Actions</h3>
+        <a href="/buyer/dashboard" class="sidebar-item"><span class="sidebar-icon"><i class="fas fa-home"></i></span> Dashboard</a>
+        <a href="/buyer/cart" class="sidebar-item"><span class="sidebar-icon"><i class="fas fa-shopping-cart"></i></span> View Cart</a>
+        <a href="/buyer/orders" class="sidebar-item"><span class="sidebar-icon"><i class="fas fa-box"></i></span> View My Orders</a>
 
     </div>
 
@@ -365,15 +366,15 @@ body {
         <!-- Search Section -->
         <div class="search-section">
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="🔍 Search products by name..." class="search-input">
-                <button onclick="clearSearch()" class="clear-btn" id="clearBtn" style="display: none;">✖️</button>
+                <input type="text" id="searchInput" placeholder="Search products by name..." class="search-input">
+                <button onclick="clearSearch()" class="clear-btn" id="clearBtn" style="display: none;"><i class="fas fa-times"></i></button>
             </div>
         </div>
 
         <!-- Products Section -->
         <div class="products-section">
             <h2 class="section-title" id="productsTitle">
-                🛍️ Available Products
+                Available Products
             </h2>
             
             <?php if(!empty($products)): ?>
@@ -384,31 +385,31 @@ body {
                                 <?php if(!empty($product->image_url)): ?>
                                     <img src="<?= htmlspecialchars($product->image_url) ?>" alt="<?= htmlspecialchars($product->product_name) ?>" style="width: 100%; height: 100%; object-fit: cover;">
                                 <?php else: ?>
-                                    🎨
+                                    <div style="display:flex; align-items:center; justify-content:center; width:100%; height:100%; color:#D9967D;"><i class="fas fa-image fa-2x"></i></div>
                                 <?php endif; ?>
                             </div>
                             <div class="product-details">
                                 <div class="product-name"><?= htmlspecialchars($product->product_name) ?></div>
                                 <?php if(!empty($product->description)): ?>
-                                    <div class="product-description" style="font-size: 0.9em; color: #6c757d; margin: 8px 0; line-height: 1.4;"><?= htmlspecialchars(substr($product->description, 0, 100)) ?><?= strlen($product->description) > 100 ? '...' : '' ?></div>
+                                    <div class="product-description" style="font-size: 0.9em; color: #777; margin: 8px 0; line-height: 1.4;"><?= htmlspecialchars(substr($product->description, 0, 100)) ?><?= strlen($product->description) > 100 ? '...' : '' ?></div>
                                 <?php endif; ?>
                                 <div class="product-price">₱<?= number_format($product->price, 2) ?></div>
                                 <div class="product-stock <?= $product->stock <= 5 ? ($product->stock == 0 ? 'out' : 'low') : '' ?>">
                                     <?php if($product->stock > 0): ?>
-                                        📦 <?= $product->stock ?> in stock
+                                        <?= $product->stock ?> in stock
                                     <?php else: ?>
-                                        ❌ Out of stock
+                                        Out of stock
                                     <?php endif; ?>
                                 </div>
                                 <div class="product-actions" style="display: flex; gap: 8px; flex-direction: column;">
-                                    <a href="/buyer/product/<?= $product->product_id ?>" class="view-product-link" style="color: #007bff; text-decoration: underline; font-weight: 500;">👁️ View Product</a>
+                                    <a href="/buyer/product/<?= $product->product_id ?>" class="view-product-link" style="color: #D9967D; text-decoration: underline; font-weight: 500;">View Product</a>
                                     <button class="add-to-cart-btn" <?= $product->stock == 0 ? 'disabled' : '' ?> 
                                             onclick="addToCart(<?= $product->product_id ?>, '<?= htmlspecialchars($product->product_name) ?>')">
-                                        <?= $product->stock == 0 ? '❌ Out of Stock' : '🛒 Add to Cart' ?>
+                                        <?= $product->stock == 0 ? 'Out of Stock' : 'Add to Cart' ?>
                                     </button>
                                     <?php if($product->stock > 0): ?>
                                         <button class="buy-now-btn" onclick="buyNow(<?= $product->product_id ?>, '<?= htmlspecialchars($product->product_name) ?>', <?= $product->price ?>)">
-                                            ⚡ Buy Now
+                                            Buy Now
                                         </button>
                                     <?php endif; ?>
                                 </div>
@@ -417,7 +418,7 @@ body {
                     <?php endforeach; ?>
                 </div>
             <?php else: ?>
-                <p style="text-align: center; color: #666; padding: 40px;">No products available at the moment.</p>
+                <p style="text-align: center; color: #777; padding: 40px;">No products available at the moment.</p>
             <?php endif; ?>
         </div>
     </div>

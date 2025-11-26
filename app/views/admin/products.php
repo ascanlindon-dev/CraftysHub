@@ -1,18 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Products Dashboard</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 /* ==== GLOBAL ==== */
-* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
-body { display:flex; min-height:100vh; background:#f5f6fa; color:#333; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+body { display:flex; min-height:100vh; background:#faf9f7; color:#2D2D2D; }
 
 /* ==== SIDEBAR ==== */
 .sidebar {
-  width:240px; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  width:240px; background:linear-gradient(135deg,#D9967D 0%,#C88A6F 100%);
   color:#fff; display:flex; flex-direction:column; justify-content:space-between; padding:20px 0;
 }
 .sidebar h2 { text-align:center; margin-bottom:30px; font-weight:600; font-size:1.5rem; }
@@ -26,7 +26,7 @@ body { display:flex; min-height:100vh; background:#f5f6fa; color:#333; }
 
 /* ==== MAIN CONTENT ==== */
 .main-content { flex:1; padding:20px; overflow-y:auto; }
-.header { background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:#fff; padding:20px 30px; border-radius:10px; margin-bottom:30px; box-shadow:0 5px 15px rgba(102,126,234,0.4); }
+.header { background:linear-gradient(135deg,#D9967D 0%,#C88A6F 100%); color:#fff; padding:20px 30px; border-radius:10px; margin-bottom:30px; box-shadow:0 5px 15px rgba(217,150,125,0.4); }
 .header h1 { margin:0; font-size:2rem; font-weight:600; }
 .header p { margin:5px 0 0 0; opacity:0.9; }
 
@@ -34,14 +34,14 @@ body { display:flex; min-height:100vh; background:#f5f6fa; color:#333; }
 .table-container { background:#fff; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); overflow:hidden; }
 table { width:100%; border-collapse:collapse; }
 th, td { padding:15px; text-align:left; border-bottom:1px solid #ecf0f1; }
-th { background:#3498db; color:#fff; font-weight:600; position:sticky; top:0; z-index:10; }
-tr:hover { background:#f8f9fa; }
+th { background:#D9967D; color:#fff; font-weight:600; position:sticky; top:0; z-index:10; }
+tr:hover { background:#faf9f7; }
 .actions button, .actions a {
   padding:5px 10px; border:none; border-radius:4px; cursor:pointer; color:#fff; margin-right:5px; text-decoration:none; display:inline-block;
 }
-.edit-btn { background:#f39c12; }
+.edit-btn { background:#D9967D; }
 .delete-btn { background:#e74c3c; }
-.btn-add { background:#3498db; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; margin-top:15px; }
+.btn-add { background:#D9967D; color:#fff; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; margin-top:15px; }
 
 /* ==== RESPONSIVE ==== */
 @media (max-width:768px){
@@ -59,24 +59,24 @@ tr:hover { background:#f8f9fa; }
   <div>
     <h2>Admin Panel</h2>
     <ul>
-      <li><a href="/admin/dashboard">📊 Dashboard</a></li>
-      <li class="active"><a href="/admin/products">📦 Products</a></li>
-      <li><a href="/admin/inventory">📋 Inventory</a></li>
-      <li><a href="/admin/orders">🛒 Orders</a></li>
-      <li><a href="/admin/users">👥 Users</a></li>
-      <li><a href="/admin/revenue">💰 Revenue</a></li>
-      <li><a href="/admin/settings">⚙️ Settings</a></li>
+      <li><a href="/admin/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+      <li class="active"><a href="/admin/products"><i class="fas fa-box"></i> Products</a></li>
+      <li><a href="/admin/inventory"><i class="fas fa-list"></i> Inventory</a></li>
+      <li><a href="/admin/orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+      <li><a href="/admin/users"><i class="fas fa-users"></i> Users</a></li>
+      <li><a href="/admin/revenue"><i class="fas fa-chart-bar"></i> Revenue</a></li>
+      <li><a href="/admin/settings"><i class="fas fa-cog"></i> Settings</a></li>
     </ul>
   </div>
   <div class="logout-section">
-    <a href="/admin/logout" class="logout-btn">🚪 Logout</a>
+    <a href="/admin/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
   </div>
 </div>
 
 <!-- Main Content -->
 <div class="main-content">
   <div class="header">
-    <h1>🛍️ Products List</h1>
+    <h1>Products List</h1>
     <p>Manage your products and inventory efficiently</p>
   </div>
 
@@ -109,10 +109,10 @@ tr:hover { background:#f8f9fa; }
               <?php endif; ?>
             </td>
             <td class="actions">
-              <a href="/admin/edit_product/<?= $p->product_id ?>" class="edit-btn">📃 Edit</a>
+              <a href="/admin/edit_product/<?= $p->product_id ?>" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
               <form action="/admin/products/delete" method="POST" style="display:inline-block;">
                 <input type="hidden" name="product_id" value="<?= $p->product_id ?>">
-                <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this product?');">🗑️ Delete</button>
+                <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this product');"><i class="fas fa-trash"></i> Delete</button>
               </form>
             </td>
           </tr>
@@ -124,9 +124,8 @@ tr:hover { background:#f8f9fa; }
     </table>
   </div>
 
-  <button onclick="window.location.href='/admin/add_product'" class="btn-add">➕ Add Product</button>
+  <button onclick="window.location.href='/admin/add_product'" class="btn-add"><i class="fas fa-plus"></i> Add Product</button>
 </div>
 
 </body>
 </html>
-

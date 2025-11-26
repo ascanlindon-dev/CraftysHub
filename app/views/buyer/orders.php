@@ -7,14 +7,14 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: "Poppins", sans-serif; 
-    background: #f8f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+    background: #faf9f7;
     overflow-x: hidden;
 }
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
     color: white;
     padding: 20px;
     display: flex;
@@ -57,8 +57,8 @@ body {
     padding: 0 20px 15px;
     font-size: 1.1em;
     font-weight: 600;
-    color: #495057;
-    border-bottom: 1px solid #dee2e6;
+    color: #2D2D2D;
+    border-bottom: 1px solid #f0ede8;
     margin-bottom: 15px;
 }
 
@@ -76,7 +76,7 @@ body {
 
 .sidebar-icon {
     background: #fff;
-    color: #667eea;
+    color: #D9967D;
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -85,16 +85,16 @@ body {
     justify-content: center;
     font-size: 1.4em;
     box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-    border: 2px solid #eee;
+    border: 2px solid #E8D4C8;
     transition: box-shadow 0.2s;
 }
 
 .sidebar-item:hover .sidebar-icon,
 .sidebar-item.active .sidebar-icon {
-    box-shadow: 0 4px 12px rgba(102,126,234,0.13);
+    box-shadow: 0 4px 12px rgba(217, 150, 125, 0.2);
     color: #fff;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-color: #667eea;
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
+    border-color: #D9967D;
 }
 
 /* Mobile menu toggle */
@@ -121,7 +121,7 @@ body {
 }
 .page-title {
     font-size: 2.5em;
-    color: #333;
+    color: #2D2D2D;
     font-weight: 600;
 }
 
@@ -130,7 +130,7 @@ body {
     display: flex;
     gap: 10px;
     margin-bottom: 25px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 2px solid #f0ede8;
     overflow-x: auto;
 }
 
@@ -139,7 +139,7 @@ body {
     background: transparent;
     border: none;
     border-bottom: 3px solid transparent;
-    color: #666;
+    color: #777;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s;
@@ -147,35 +147,36 @@ body {
 }
 
 .order-tab:hover {
-    color: #667eea;
-    background: rgba(102, 126, 234, 0.05);
+    color: #D9967D;
+    background: rgba(217, 150, 125, 0.05);
 }
 
 .order-tab.active {
-    color: #667eea;
-    border-bottom-color: #667eea;
+    color: #D9967D;
+    border-bottom-color: #D9967D;
     font-weight: 600;
 }
 
 .order-tab .count {
-    background: #e0e0e0;
+    background: #E8D4C8;
     padding: 2px 8px;
     border-radius: 12px;
     font-size: 0.85em;
     margin-left: 5px;
+    color: #2D2D2D;
 }
 
 .order-tab.active .count {
-    background: #667eea;
+    background: #D9967D;
     color: white;
 }
 
 .order-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 25px;
     margin-bottom: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     transition: transform 0.3s;
 }
 .order-card:hover {
@@ -188,15 +189,15 @@ body {
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #f0ede8;
 }
 .order-id {
     font-size: 1.3em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
 }
 .order-date {
-    color: #666;
+    color: #777;
     font-size: 0.95em;
 }
 
@@ -208,24 +209,24 @@ body {
     text-transform: uppercase;
 }
 .status-pending {
-    background: #fff3cd;
-    color: #856404;
+    background: #fef3c7;
+    color: #92400e;
 }
 .status-processing {
-    background: #cce5ff;
-    color: #004085;
+    background: #dbeafe;
+    color: #1e40af;
 }
 .status-shipped {
-    background: #d4edda;
-    color: #155724;
+    background: #dcfce7;
+    color: #166534;
 }
 .status-delivered {
-    background: #d1ecf1;
-    color: #0c5460;
+    background: #cffafe;
+    color: #164e63;
 }
 .status-cancelled {
-    background: #f8d7da;
-    color: #721c24;
+    background: #fee2e2;
+    color: #991b1b;
 }
 
 .order-items {
@@ -236,22 +237,22 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f0eb;
 }
 .item-info {
     flex: 1;
 }
 .item-name {
     font-weight: 500;
-    color: #333;
+    color: #2D2D2D;
 }
 .item-details {
-    color: #666;
+    color: #777;
     font-size: 0.9em;
 }
 .item-price {
     font-weight: 600;
-    color: #667eea;
+    color: #D9967D;
 }
 
 .order-summary {
@@ -259,12 +260,12 @@ body {
     justify-content: space-between;
     align-items: center;
     padding-top: 15px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #f0ede8;
 }
 .order-total {
     font-size: 1.2em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
 }
 .order-actions {
     display: flex;
@@ -281,20 +282,22 @@ body {
     display: inline-block;
 }
 .btn-primary {
-    background: #667eea;
+    background: #D9967D;
     color: white;
 }
 .btn-primary:hover {
-    background: #5a67d8;
+    background: #C88A6F;
     color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(200, 138, 111, 0.2);
 }
 .btn-outline {
     background: transparent;
-    color: #667eea;
-    border: 1px solid #667eea;
+    color: #D9967D;
+    border: 1px solid #D9967D;
 }
 .btn-outline:hover {
-    background: #667eea;
+    background: #D9967D;
     color: white;
 }
 
@@ -302,10 +305,10 @@ body {
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #666;
+    color: #777;
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 .empty-state .icon {
     font-size: 4em;
@@ -315,7 +318,7 @@ body {
 .empty-state .btn {
     margin-top: 20px;
     padding: 12px 24px;
-    background: #667eea;
+    background: #D9967D;
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -323,7 +326,7 @@ body {
     transition: all 0.3s;
 }
 .empty-state .btn:hover {
-    background: #5a67d8;
+    background: #C88A6F;
     color: white;
 }
 
@@ -344,7 +347,7 @@ body {
     background-color: white;
     margin: 2% auto;
     padding: 0;
-    border-radius: 15px;
+    border-radius: 12px;
     width: 90%;
     max-width: 800px;
     max-height: 90vh;
@@ -354,10 +357,10 @@ body {
 }
 
 .modal-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
     color: white;
     padding: 20px 30px;
-    border-radius: 15px 15px 0 0;
+    border-radius: 12px 12px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -396,15 +399,15 @@ body {
 }
 
 .info-card {
-    background: #f8f9fa;
+    background: #faf9f7;
     padding: 20px;
     border-radius: 10px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid #D9967D;
 }
 
 .info-label {
     font-weight: 600;
-    color: #495057;
+    color: #777;
     font-size: 0.9em;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -413,7 +416,7 @@ body {
 
 .info-value {
     font-size: 1.1em;
-    color: #333;
+    color: #2D2D2D;
     font-weight: 500;
 }
 
@@ -424,10 +427,10 @@ body {
 .section-title {
     font-size: 1.3em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px solid #f0ede8;
 }
 
 .product-item {
@@ -435,7 +438,7 @@ body {
     align-items: center;
     padding: 15px;
     background: white;
-    border: 1px solid #e9ecef;
+    border: 1px solid #f0ede8;
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
@@ -444,7 +447,7 @@ body {
 .product-image {
     width: 80px;
     height: 80px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    background: linear-gradient(45deg, #D9967D, #C88A6F);
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -462,12 +465,12 @@ body {
 .product-name {
     font-size: 1.1em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
     margin-bottom: 5px;
 }
 
 .product-description {
-    color: #6c757d;
+    color: #777;
     font-size: 0.9em;
     margin-bottom: 8px;
     line-height: 1.4;
@@ -480,11 +483,11 @@ body {
 }
 
 .product-quantity {
-    color: #495057;
+    color: #777;
 }
 
 .product-price {
-    color: #667eea;
+    color: #D9967D;
     font-weight: 600;
 }
 
@@ -503,7 +506,7 @@ body {
     }
     .account-logo {
         background: #fff !important;
-        color: #333 !important;
+        color: #2D2D2D !important;
         border-radius: 50%;
         width: 44px;
         height: 44px;
@@ -513,11 +516,11 @@ body {
         font-size: 2em;
         cursor: pointer;
         box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        border: 2px solid #eee;
+        border: 2px solid #E8D4C8;
         transition: box-shadow 0.2s;
     }
     .account-logo:hover {
-        box-shadow: 0 4px 12px rgba(102,126,234,0.15);
+        box-shadow: 0 4px 12px rgba(217,150,125,0.15);
     }
     .dropdown-menu {
         display: none;
@@ -534,13 +537,13 @@ body {
     .dropdown-item {
         display: block;
         padding: 15px 20px;
-        color: #333;
+        color: #2D2D2D;
         text-decoration: none;
         transition: background 0.2s;
     }
     .dropdown-item:hover {
-        background: #f8f9fa;
-        color: #667eea;
+        background: #faf9f7;
+        color: #D9967D;
     }
 
 
@@ -615,16 +618,16 @@ body {
     <div class="header">
         <div style="display: flex; align-items: center; gap: 15px;">
             <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-            <div class="logo">🛍️ CraftsHub - My Orders</div>
+            <div class="logo">CraftsHub - My Orders</div>
         </div>
         <div class="user-info">
                 <span>Welcome, <?= htmlspecialchars($buyer_name) ?>!</span>
                 <div class="account-dropdown">
-                    <span class="account-logo" onclick="toggleAccountMenu()">👤</span>
+                    <span class="account-logo" onclick="toggleAccountMenu()">A</span>
                     <div class="dropdown-menu" id="accountMenu">
-                        <a href="/buyer/account-settings" class="dropdown-item">⚙️ Account Settings</a>
-                        <a href="/buyer/customer-service" class="dropdown-item">💬 Customer Service</a>
-                        <a href="/buyer/logout" class="dropdown-item">🚪 Logout</a>
+                        <a href="/buyer/account-settings" class="dropdown-item">Account Settings</a>
+                        <a href="/buyer/customer-service" class="dropdown-item">Customer Service</a>
+                        <a href="/buyer/logout" class="dropdown-item">Logout</a>
                     </div>
                 </div>
         </div>
@@ -647,10 +650,10 @@ body {
 
     <!-- Sidebar Navigation -->
     <div class="sidebar">
-        <h3 class="sidebar-title">🚀 Quick Actions</h3>
-        <a href="/buyer/dashboard" class="sidebar-item"><span class="sidebar-icon">🏠</span> Dashboard</a>
-        <a href="/buyer/cart" class="sidebar-item"><span class="sidebar-icon">🛒</span> View Cart</a>
-        <a href="/buyer/orders" class="sidebar-item active"><span class="sidebar-icon">📦</span> View My Orders</a>
+        <h3 class="sidebar-title"><i class="fas fa-bolt" style="color:#D9967D; margin-right:8px;"></i> Quick Actions</h3>
+        <a href="/buyer/dashboard" class="sidebar-item"><span class="sidebar-icon"><i class="fas fa-home"></i></span> Dashboard</a>
+        <a href="/buyer/cart" class="sidebar-item"><span class="sidebar-icon"><i class="fas fa-shopping-cart"></i></span> View Cart</a>
+        <a href="/buyer/orders" class="sidebar-item active"><span class="sidebar-icon"><i class="fas fa-box"></i></span> View My Orders</a>
         <!--a href="#" class="sidebar-item">� Update Profile</a-->
 
     </div>
@@ -658,7 +661,7 @@ body {
     <!-- Main Content -->
     <div class="main-content">
         <div class="page-header">
-            <h1 class="page-title">📦 My Orders</h1>
+            <h1 class="page-title"><i class="fas fa-box" style="color:#D9967D; margin-right:8px;"></i> My Orders</h1>
         </div>
 
         <!-- Order Category Tabs -->
@@ -670,16 +673,16 @@ body {
                 ⏳ Pending <span class="count" id="count-pending">0</span>
             </button>
             <button class="order-tab" onclick="filterOrders('processing')" id="tab-processing">
-                🔄 Processing <span class="count" id="count-processing">0</span>
+                <i class="fas fa-sync-alt" style="margin-right:8px;color:#C88A6F;"></i> Processing <span class="count" id="count-processing">0</span>
             </button>
             <button class="order-tab" onclick="filterOrders('shipped')" id="tab-shipped">
-                🚚 Shipped <span class="count" id="count-shipped">0</span>
+                Shipped <span class="count" id="count-shipped">0</span>
             </button>
             <button class="order-tab" onclick="filterOrders('delivered')" id="tab-delivered">
-                ✅ Delivered <span class="count" id="count-delivered">0</span>
+                Delivered <span class="count" id="count-delivered">0</span>
             </button>
             <button class="order-tab" onclick="filterOrders('cancelled')" id="tab-cancelled">
-                ❌ Cancelled <span class="count" id="count-cancelled">0</span>
+                Cancelled <span class="count" id="count-cancelled">0</span>
             </button>
         </div>
         
@@ -725,11 +728,11 @@ body {
                     <div class="order-summary">
                         <div class="order-total">Total: ₱<?= number_format($order->grand_total ?? 0, 2) ?></div>
                         <div class="order-actions">
-                            <button class="btn btn-outline" onclick="viewOrderDetails(<?= $order->id ?>, '<?= htmlspecialchars($order->order_number ?? $order->id) ?>', '<?= htmlspecialchars($order->status ?? 'pending') ?>', '<?= $order->order_date ?? 'now' ?>', <?= $order->grand_total ?? 0 ?>, '<?= htmlspecialchars($order->shipping_address ?? '') ?>', '<?= htmlspecialchars($order->payment_method ?? '') ?>', '<?= htmlspecialchars($order->payment_status ?? '') ?>')">📋 View Details</button>
+                            <button class="btn btn-outline" onclick="viewOrderDetails(<?= $order->id ?>, '<?= htmlspecialchars($order->order_number ?? $order->id) ?>', '<?= htmlspecialchars($order->status ?? 'pending') ?>', '<?= $order->order_date ?? 'now' ?>', <?= $order->grand_total ?? 0 ?>, '<?= htmlspecialchars($order->shipping_address ?? '') ?>', '<?= htmlspecialchars($order->payment_method ?? '') ?>', '<?= htmlspecialchars($order->payment_status ?? '') ?>')">View Details</button>
                             <?php if(strtolower($order->status ?? 'pending') === 'delivered'): ?>
-                                <a href="#" class="btn btn-primary">⭐ Review</a>
+                                <a href="#" class="btn btn-primary">Review</a>
                             <?php elseif(strtolower($order->status ?? 'pending') === 'pending'): ?>
-                                <button class="btn btn-outline" onclick="cancelOrder(<?= $order->id ?>, '<?= htmlspecialchars($order->order_number ?? $order->id) ?>')">❌ Cancel</button>
+                                <button class="btn btn-outline" onclick="cancelOrder(<?= $order->id ?>, '<?= htmlspecialchars($order->order_number ?? $order->id) ?>')">Cancel</button>
                             <?php endif; ?>
                         </div>
                             <!-- Cancel Order Popup Overlay (rendered ONCE per page) -->
@@ -759,11 +762,17 @@ body {
             <?php endforeach; ?>
         <?php else: ?>
             <div class="empty-state">
-                <div class="icon">📦</div>
+                <div class="icon"><i class="fas fa-box" style="color:#D9967D;"></i></div>
                 <h3>No orders yet</h3>
                 <p>You haven't placed any orders yet. Start shopping to see your orders here!</p>
-                <a href="/buyer/dashboard" class="btn">🛍️ Start Shopping</a>
+                <a href="/buyer/dashboard" class="btn"><i class="fas fa-store" style="margin-right:8px;color:#D9967D;"></i> Start Shopping</a>
             </div>
+                                                <tr>
+                                                    <td colspan="7" style="text-align:center; padding: 40px; color: #7f8c8d;">
+                                                        <strong>No orders found</strong><br>
+                                                        <small>Add your first order to start</small>
+                                                    </td>
+                                                </tr>
         <?php endif; ?>
     </div>
 
@@ -803,7 +812,7 @@ body {
                 </div>
 
                 <div class="products-section">
-                    <h3 class="section-title">📦 Order Items</h3>
+                    <h3 class="section-title"><i class="fas fa-box" style="color:#D9967D; margin-right:8px;"></i> Order Items</h3>
                     <div id="modalOrderItems">
                         <div style="text-align: center; padding: 20px; color: #6c757d;">
                             Loading order items...
@@ -884,7 +893,7 @@ body {
                         itemsHtml += `
                             <div class="product-item">
                                 <div class="product-image">
-                                    ${item.product_image ? `<img src="${item.product_image}" alt="${item.product_name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">` : '🎨'}
+                                    ${item.product_image ? `<img src="${item.product_image}" alt="${item.product_name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">` : '<i class="fas fa-image" style="font-size:36px;color:#D9967D;"></i>'}
                                 </div>
                                 <div class="product-details">
                                     <div class="product-name">${item.product_name || 'Unknown Product'}</div>
@@ -912,7 +921,7 @@ body {
                 } else {
                     itemsContainer.innerHTML = `
                         <div style="text-align: center; padding: 40px; color: #6c757d;">
-                            <div style="font-size: 2em; margin-bottom: 15px;">📦</div>
+                            <div style="font-size: 2em; margin-bottom: 15px;"><i class="fas fa-box" style="color:#D9967D;"></i></div>
                             <div>No items found for this order</div>
                         </div>
                     `;
@@ -922,7 +931,7 @@ body {
                 console.error('Error loading order items:', error);
                 itemsContainer.innerHTML = `
                     <div style="text-align: center; padding: 40px; color: #dc3545;">
-                        <div style="font-size: 2em; margin-bottom: 15px;">⚠️</div>
+                        <div style="font-size: 2em; margin-bottom: 15px;"><i class="fas fa-exclamation-triangle" style="color:#f39c12;"></i></div>
                         <div>Failed to load order items</div>
                         <div style="font-size: 0.9em; margin-top: 10px;">Please try again later</div>
                     </div>
@@ -1063,7 +1072,7 @@ body {
                     emptyMsg.id = 'empty-orders-message';
                     emptyMsg.style.cssText = 'text-align: center; padding: 60px 20px; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);';
                     emptyMsg.innerHTML = `
-                        <div style="font-size: 4em; margin-bottom: 20px;">📦</div>
+                        <div style="font-size: 4em; margin-bottom: 20px;"><i class="fas fa-box" style="color:#D9967D;"></i></div>
                         <h3 style="color: #666; margin-bottom: 10px;">No orders found</h3>
                         <p style="color: #999;">No ${currentFilter === 'all' ? '' : currentFilter} orders at the moment.</p>
                     `;

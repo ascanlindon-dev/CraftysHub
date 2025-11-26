@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +7,14 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    font-family: "Poppins", sans-serif; 
-    background: #f8f9fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+    background: #faf9f7;
     overflow-x: hidden;
 }
 
 /* Header */
 .header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
     color: white;
     padding: 20px;
     display: flex;
@@ -53,12 +52,12 @@ body {
 }
 .page-title {
     font-size: 2.5em;
-    color: #333;
+    color: #2D2D2D;
     font-weight: 600;
     margin-bottom: 10px;
 }
 .page-subtitle {
-    color: #666;
+    color: #777;
     font-size: 1.1em;
 }
 
@@ -72,14 +71,14 @@ body {
     gap: 10px;
 }
 .alert-success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #86efac;
 }
 .alert-error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
 }
 
 /* Checkout Container */
@@ -92,9 +91,9 @@ body {
 /* Checkout Form */
 .checkout-form {
     background: white;
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 
 .form-section {
@@ -105,13 +104,12 @@ body {
 }
 
 .section-title {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
     margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f5f0eb;
 }
 
 .form-group {
@@ -119,22 +117,27 @@ body {
 }
 .form-label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: 500;
-    color: #333;
+    color: #2D2D2D;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
 }
 .form-input, .form-textarea, .form-select {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #ddd;
+    border: 2px solid #E8D4C8;
     border-radius: 8px;
     font-size: 16px;
+    background: #faf9f7;
     transition: all 0.3s;
 }
 .form-input:focus, .form-textarea:focus, .form-select:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #D9967D;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(217, 150, 125, 0.1);
 }
 .form-textarea {
     resize: vertical;
@@ -143,101 +146,121 @@ body {
 
 .payment-options {
     display: grid;
-    gap: 10px;
+    gap: 12px;
 }
 .payment-option {
     display: flex;
     align-items: center;
-    padding: 15px;
-    border: 2px solid #eee;
+    padding: 16px;
+    border: 2px solid #E8D4C8;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s;
+    background: white;
 }
 .payment-option:hover {
-    border-color: #667eea;
-    background: #f8f9ff;
+    border-color: #D9967D;
+    background: #faf9f7;
 }
 .payment-option input[type="radio"] {
-    margin-right: 10px;
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #D9967D;
 }
 .payment-option.selected {
-    border-color: #667eea;
-    background: #f8f9ff;
+    border-color: #D9967D;
+    background: #faf9f7;
+    box-shadow: 0 2px 8px rgba(217, 150, 125, 0.1);
+}
+.payment-option div strong {
+    color: #2D2D2D;
+}
+.payment-option div small {
+    color: #777;
 }
 
 /* Order Summary */
 .order-summary {
     background: white;
-    border-radius: 15px;
+    border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     height: fit-content;
+    position: sticky;
+    top: 20px;
 }
 .summary-title {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 600;
-    color: #333;
+    color: #2D2D2D;
     margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f5f0eb;
 }
 
 .order-item {
     display: flex;
     align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0ede8;
 }
 .order-item:last-child {
     border-bottom: none;
 }
 .item-image {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #667eea, #764ba2);
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #E8A89B, #D9967D);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    margin-right: 15px;
+    margin-right: 12px;
     overflow: hidden;
+    flex-shrink: 0;
+    font-size: 1.5em;
 }
 .item-details {
     flex: 1;
 }
 .item-name {
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 5px;
+    font-weight: 600;
+    color: #2D2D2D;
+    margin-bottom: 4px;
+    font-size: 0.95em;
 }
 .item-quantity {
-    color: #666;
-    font-size: 0.9em;
+    color: #777;
+    font-size: 0.85em;
 }
 .item-price {
     font-weight: 600;
-    color: #333;
+    color: #D9967D;
+    font-size: 1em;
 }
 
 .summary-totals {
     margin-top: 20px;
-    padding-top: 20px;
-    border-top: 2px solid #eee;
+    padding-top: 15px;
+    border-top: 2px solid #f5f0eb;
 }
 .summary-row {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+    color: #2D2D2D;
+    font-size: 0.95em;
 }
 .summary-row.total {
     font-size: 1.2em;
-    font-weight: 600;
-    color: #333;
+    font-weight: 700;
+    color: #2D2D2D;
     padding-top: 10px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #f0ede8;
+    margin-top: 10px;
 }
 
 /* Buttons */
@@ -247,34 +270,39 @@ body {
     margin-top: 30px;
 }
 .btn {
-    padding: 15px 30px;
+    padding: 14px 28px;
     border: none;
     border-radius: 8px;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
     display: inline-block;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 .btn-primary {
-    background: #667eea;
+    background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
     color: white;
     flex: 1;
+    box-shadow: 0 4px 12px rgba(200, 138, 111, 0.2);
 }
 .btn-primary:hover {
-    background: #5a67d8;
+    background: linear-gradient(135deg, #CE8A74 0%, #BD7E63 100%);
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(200, 138, 111, 0.3);
 }
 .btn-secondary {
-    background: #f8f9fa;
-    color: #333;
-    border: 1px solid #ddd;
+    background: white;
+    color: #D9967D;
+    border: 2px solid #E8D4C8;
 }
 .btn-secondary:hover {
-    background: #e9ecef;
-    color: #333;
+    background: #faf9f7;
+    border-color: #D9967D;
+    color: #C88A6F;
 }
 
 /* Responsive */
@@ -295,31 +323,31 @@ body {
 <body>
     <!-- Header -->
     <div class="header">
-        <div class="logo">💳 CraftsHub - Checkout</div>
+        <div class="logo">CraftsHub - Checkout</div>
         <div class="user-info">
             <span>Welcome, <?= htmlspecialchars($buyer_name) ?>!</span>
-            <a href="/buyer/logout" class="logout-btn">🚪 Logout</a>
+            <a href="/buyer/logout" class="logout-btn">Logout</a>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <div class="page-header">
-            <h1 class="page-title">💳 Checkout</h1>
+            <h1 class="page-title">Checkout</h1>
             <p class="page-subtitle">Review your order and complete your purchase</p>
         </div>
 
         <!-- Success/Error Messages -->
         <?php if(isset($_SESSION['success_message'])): ?>
             <div class="alert alert-success">
-                ✅ <?= $_SESSION['success_message']; ?>
+                ✓ <?= $_SESSION['success_message']; ?>
             </div>
             <?php unset($_SESSION['success_message']); ?>
         <?php endif; ?>
 
         <?php if(isset($_SESSION['error_message'])): ?>
             <div class="alert alert-error">
-                ❌ <?= $_SESSION['error_message']; ?>
+                ✗ <?= $_SESSION['error_message']; ?>
             </div>
             <?php unset($_SESSION['error_message']); ?>
         <?php endif; ?>
@@ -330,50 +358,29 @@ body {
                 <form method="POST" action="/buyer/checkout">
                     <!-- Shipping Information -->
                     <div class="form-section">
-                        <h3 class="section-title">🚚 Shipping Information</h3>
+                        <h3 class="section-title">Shipping Information</h3>
                         <div class="form-group">
                             <label class="form-label" for="shipping_address">Shipping Address *</label>
-                            <select class="form-select" id="shipping_address" name="shipping_address" required>
-                                <option value="">Select your location...</option>
-                                <option value="Baco">Baco</option>
-                                <option value="Bansud">Bansud</option>
-                                <option value="Bongabong">Bongabong</option>
-                                <option value="Bulalacao">Bulalacao</option>
-                                <option value="Calapan City">Calapan City</option>
-                                <option value="Gloria">Gloria</option>
-                                <option value="Mansalay">Mansalay</option>
-                                <option value="Naujan">Naujan</option>
-                                <option value="Pinamalayan">Pinamalayan</option>
-                                <option value="Pola">Pola</option>
-                                <option value="Puerto Galera">Puerto Galera</option>
-                                <option value="Roxas">Roxas</option>
-                                <option value="San Teodoro">San Teodoro</option>
-                                <option value="Socorro">Socorro</option>
-                                <option value="Victoria">Victoria</option>
-                                <option value="Other">Other (please specify in notes)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="order_notes">Notes / Special Instructions</label>
-                            <textarea class="form-textarea" id="order_notes" name="order_notes" placeholder="Enter any notes or special instructions for delivery..."></textarea>
+                            <textarea class="form-textarea" id="shipping_address" name="shipping_address" required 
+                                placeholder="Enter your complete shipping address..."></textarea>
                         </div>
                     </div>
 
                     <!-- Payment Method -->
                     <div class="form-section">
-                        <h3 class="section-title">💰 Payment Method</h3>
+                        <h3 class="section-title">Payment Method</h3>
                         <div class="payment-options">
                             <label class="payment-option">
                                 <input type="radio" name="payment_method" value="cash_on_delivery" checked>
                                 <div>
-                                    <strong>💵 Cash on Delivery</strong><br>
+                                    <strong>Cash on Delivery</strong><br>
                                     <small>Pay when your order arrives</small>
                                 </div>
                             </label>
                             <label class="payment-option">
                                 <input type="radio" name="payment_method" value="GCASH">
                                 <div>
-                                    <strong>📱 GCash</strong><br>
+                                    <strong>GCash</strong><br>
                                     <small>Pay securely using GCash (via PayMongo)</small>
                                 </div>
                             </label>
@@ -383,15 +390,15 @@ body {
 
                     <!-- Buttons -->
                     <div class="btn-group">
-                        <a href="/buyer/cart" class="btn btn-secondary">🔙 Back to Cart</a>
-                        <button type="submit" class="btn btn-primary">🛒 Place Order</button>
+                        <a href="/buyer/cart" class="btn btn-secondary">Back to Cart</a>
+                        <button type="submit" class="btn btn-primary">Place Order</button>
                     </div>
                 </form>
             </div>
 
             <!-- Order Summary -->
             <div class="order-summary">
-                <h3 class="summary-title">📋 Order Summary</h3>
+                <h3 class="summary-title">Order Summary</h3>
                 
                 <!-- Order Items -->
                 <?php foreach($cart_items as $item): ?>

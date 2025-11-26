@@ -4,26 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inventory Management - Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* ==== GLOBAL STYLES ==== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
-      background-color: #f5f6fa;
+      background-color: #faf9f7;
       display: flex;
       height: 100vh;
-      color: #333;
+      color: #2D2D2D;
     }
 
     /* ==== SIDEBAR ==== */
     .sidebar {
       width: 240px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -101,12 +102,12 @@
     }
 
     .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       color: #fff;
       padding: 20px 30px;
       border-radius: 10px;
       margin-bottom: 30px;
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 5px 15px rgba(217, 150, 125, 0.4);
     }
 
     .header h1 {
@@ -142,15 +143,15 @@
     }
 
     .stat-card.warning {
-      border-left: 4px solid #f39c12;
+      border-left: 4px solid #D9967D;
     }
 
     .stat-card.success {
-      border-left: 4px solid #2ecc71;
+      border-left: 4px solid #C88A6F;
     }
 
     .stat-card.info {
-      border-left: 4px solid #3498db;
+      border-left: 4px solid #E8D4C8;
     }
 
     .stat-card.danger {
@@ -160,12 +161,12 @@
     .stat-number {
       font-size: 2.5rem;
       font-weight: bold;
-      color: #2c3e50;
+      color: #2D2D2D;
       margin-bottom: 10px;
     }
 
     .stat-label {
-      color: #7f8c8d;
+      color: #777;
       font-size: 1rem;
       font-weight: 500;
     }
@@ -180,7 +181,7 @@
     }
 
     .section-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       color: #fff;
       padding: 20px 30px;
       display: flex;
@@ -209,12 +210,12 @@
     }
 
     .btn-primary {
-      background: #3498db;
+      background: #D9967D;
       color: #fff;
     }
 
     .btn-primary:hover {
-      background: #2980b9;
+      background: #C88A6F;
       transform: translateY(-2px);
     }
 
@@ -259,16 +260,16 @@
     }
 
     th {
-      background: #f8f9fa;
+      background: #faf9f7;
       font-weight: 600;
-      color: #2c3e50;
+      color: #2D2D2D;
       position: sticky;
       top: 0;
       z-index: 10;
     }
 
     tr:hover {
-      background: #f8f9fa;
+      background: #faf9f7;
     }
 
     .stock-badge {
@@ -308,14 +309,14 @@
     .quick-update input {
       width: 60px;
       padding: 5px;
-      border: 1px solid #ddd;
+      border: 1px solid #E8D4C8;
       border-radius: 3px;
       text-align: center;
     }
 
     .quick-update button {
       padding: 5px 8px;
-      background: #3498db;
+      background: #D9967D;
       color: #fff;
       border: none;
       border-radius: 3px;
@@ -324,7 +325,7 @@
     }
 
     .quick-update button:hover {
-      background: #2980b9;
+      background: #C88A6F;
     }
 
     /* ==== ALERTS ==== */
@@ -336,9 +337,9 @@
     }
 
     .alert-success {
-      background: #d5f4e6;
-      color: #2ecc71;
-      border-color: #2ecc71;
+      background: #E8D4C8;
+      color: #D9967D;
+      border-color: #D9967D;
     }
 
     .alert-error {
@@ -389,17 +390,17 @@
     <div>
       <h2>CraftsHub Admin</h2>
       <ul>
-        <li><a href="/admin/dashboard">📊 Dashboard</a></li>
-        <li><a href="/admin/products">📦 Products</a></li>
-        <li class="active"><a href="/admin/inventory">📋 Inventory</a></li>
-        <li><a href="/admin/orders">🛒 Orders</a></li>
-        <li><a href="/admin/users">👥 Users</a></li>
-        <li><a href="/admin/revenue">💰 Revenue</a></li>
-        <li><a href="/admin/settings">⚙️ Settings</a></li>
+        <li><a href="/admin/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="/admin/products"><i class="fas fa-box"></i> Products</a></li>
+        <li class="active"><a href="/admin/inventory"><i class="fas fa-list"></i> Inventory</a></li>
+        <li><a href="/admin/orders"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+        <li><a href="/admin/users"><i class="fas fa-users"></i> Users</a></li>
+        <li><a href="/admin/revenue"><i class="fas fa-chart-bar"></i> Revenue</a></li>
+        <li><a href="/admin/settings"><i class="fas fa-cog"></i> Settings</a></li>
       </ul>
     </div>
     <div class="logout-section">
-      <a href="/admin/logout" class="logout-btn">🚪 Logout</a>
+      <a href="/admin/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
   </div>
 
@@ -407,21 +408,21 @@
   <div class="main-content">
     <!-- Header -->
     <div class="header">
-      <h1>📋 Inventory Management</h1>
+      <h1>Inventory Management</h1>
       <p>Monitor stock levels, track inventory, and manage product availability</p>
     </div>
 
     <!-- Success/Error Messages -->
     <?php if (isset($_SESSION['success_message'])): ?>
       <div class="alert alert-success">
-        ✅ <?= htmlspecialchars($_SESSION['success_message']) ?>
+        <i class="fas fa-check-circle"></i> <?= htmlspecialchars($_SESSION['success_message']) ?>
       </div>
       <?php unset($_SESSION['success_message']); ?>
     <?php endif; ?>
 
     <?php if (isset($_SESSION['error_message'])): ?>
       <div class="alert alert-error">
-        ❌ <?= htmlspecialchars($_SESSION['error_message']) ?>
+        <i class="fas fa-times-circle"></i> <?= htmlspecialchars($_SESSION['error_message']) ?>
       </div>
       <?php unset($_SESSION['error_message']); ?>
     <?php endif; ?>
@@ -447,18 +448,18 @@
     </div>
 
     <!-- Low Stock Alerts -->
-    <?php if (!empty($low_stock_products)): ?>
+      <?php if (!empty($low_stock_products)): ?>
       <div class="alert alert-warning">
-        ⚠️ <strong>Low Stock Alert:</strong> You have <?= count($low_stock_products) ?> products with low stock levels that need attention.
+        <i class="fas fa-exclamation-triangle"></i> <strong>Low Stock Alert:</strong> You have <?= count($low_stock_products) ?> products with low stock levels that need attention.
       </div>
     <?php endif; ?>
 
     <!-- Inventory Table -->
     <div class="inventory-section">
-      <div class="section-header">
+          <div class="section-header">
         <h2 class="section-title">Product Inventory</h2>
         <div>
-          <button onclick="refreshInventory()" class="btn btn-success">🔄 Refresh</button>
+          <button onclick="refreshInventory()" class="btn btn-success"><i class="fas fa-sync-alt"></i> Refresh</button>
         </div>
       </div>
 
@@ -527,7 +528,7 @@
     <?php if (!empty($low_stock_products)): ?>
       <div class="inventory-section">
         <div class="section-header">
-          <h2 class="section-title">⚠️ Low Stock Products</h2>
+          <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Low Stock Products</h2>
           <span style="background: rgba(255,255,255,0.2); padding: 5px 10px; border-radius: 15px; font-size: 0.9rem;">
             <?= count($low_stock_products) ?> items need attention
           </span>

@@ -4,32 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* ==== GLOBAL STYLES ==== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Poppins", sans-serif;
     }
 
     body {
-      background-color: #f5f6fa;
+      background-color: #faf7f5;
       display: flex;
-      height: 100vh;
-      color: #333;
+      min-height: 100vh;
+      color: #2D2D2D;
     }
 
     /* ==== SIDEBAR ==== */
     .sidebar {
       width: 240px;
-      background: #1e1f26;
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       padding: 20px 0;
       transition: all 0.3s ease;
+      box-shadow: 2px 0 18px rgba(0,0,0,0.08);
     }
 
     .sidebar h2 {
@@ -50,7 +52,7 @@
 
     .sidebar ul li:hover,
     .sidebar ul li.active {
-      background: #3498db;
+      background: rgba(255,255,255,0.08);
     }
 
     .sidebar ul li i {
@@ -59,10 +61,15 @@
 
     .logout {
       text-align: center;
-      padding: 15px 0;
-      background: #e74c3c;
+      padding: 12px 16px;
+      margin: 0 16px 16px 16px;
+      background: rgba(0,0,0,0.08);
+      border-radius: 8px;
       cursor: pointer;
-      font-weight: 500;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
     }
 
     /* ==== MAIN CONTENT ==== */
@@ -73,12 +80,12 @@
     }
 
     .topbar {
-      background: #fff;
-      padding: 15px 30px;
+      background: transparent;
+      padding: 18px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     .topbar input {
@@ -106,27 +113,34 @@
       padding: 30px;
       flex: 1;
       overflow-y: auto;
+      background: transparent;
     }
 
     /* ==== SETTINGS SPECIFIC STYLES ==== */
     .settings-container {
-      max-width: 900px;
+      max-width: 980px;
+      margin: 0 auto;
     }
 
     .settings-section {
       background: #fff;
-      border-radius: 10px;
-      padding: 25px;
+      border-radius: 12px;
+      padding: 26px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 18px rgba(177,141,123,0.08);
+      border: 1px solid rgba(217,150,125,0.12);
     }
 
     .settings-section h3 {
-      font-size: 20px;
-      margin-bottom: 20px;
-      color: #2c3e50;
-      border-bottom: 2px solid #3498db;
+      font-size: 18px;
+      margin-bottom: 18px;
+      color: #2D2D2D;
+      border-bottom: 2px solid rgba(200,138,111,0.12);
       padding-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
     }
 
     .form-group {
@@ -155,7 +169,8 @@
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: #3498db;
+      border-color: #C88A6F;
+      box-shadow: 0 4px 12px rgba(200,138,111,0.06);
     }
 
     .form-group textarea {
@@ -185,12 +200,12 @@
     }
 
     .btn-primary {
-      background: #3498db;
+      background: #C88A6F;
       color: #fff;
     }
 
     .btn-primary:hover {
-      background: #2980b9;
+      background: #b7775e;
     }
 
     .btn-danger {
@@ -214,7 +229,7 @@
     .info-text {
       font-size: 12px;
       color: #7f8c8d;
-      margin-top: 5px;
+      margin-top: 6px;
     }
 
     /* ==== PASSWORD TOGGLE STYLES ====
@@ -251,6 +266,7 @@
       .sidebar ul li {
         text-align: center;
       }
+      .dashboard-content { padding: 18px; }
     }
   </style>
 </head>
@@ -263,42 +279,42 @@
       <ul>
         <li>
           <a href="/admin/dashboard" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>📊</i><span>Dashboard</span>
+            <i class="fas fa-chart-line"></i><span>Dashboard</span>
           </a>
         </li>
         <li>
           <a href="/admin/products" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>📦</i><span>Products</span>
+            <i class="fas fa-box"></i><span>Products</span>
           </a>
         </li>
         <li>
           <a href="/admin/inventory" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>📋</i><span>Inventory</span>
+            <i class="fas fa-list"></i><span>Inventory</span>
           </a>
         </li>
         <li>
           <a href="/admin/users" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>👥</i><span>Users</span>
+            <i class="fas fa-users"></i><span>Users</span>
           </a>
         </li>
         <li>
           <a href="/admin/orders" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>🛒</i><span>Orders</span>
+            <i class="fas fa-shopping-cart"></i><span>Orders</span>
           </a>
         </li>
         <li>
           <a href="/admin/revenue" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>💰</i><span>Revenue</span>
+            <i class="fas fa-chart-bar"></i><span>Revenue</span>
           </a>
         </li>
         <li class="active">
           <a href="/admin/settings" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>⚙️</i><span>Settings</span>
+            <i class="fas fa-cog"></i><span>Settings</span>
           </a>
         </li>
       </ul>
     </div>
-    <a href="/admin/logout" class="logout" style="color: inherit; text-decoration: none;">Logout</a>
+    <a href="/admin/logout" class="logout" style="color: inherit; text-decoration: none;"><i class="fas fa-sign-out-alt" style="margin-right:8px;"></i>Logout</a>
   </div>
 
   <!-- Main Content -->
@@ -313,7 +329,7 @@
 
     <div class="dashboard-content">
       <div class="settings-container">
-        <h2>⚙️ System Settings</h2>
+        <h2><i class="fas fa-cog"></i> System Settings</h2>
         <br>
 
         <!-- General Settings -->
@@ -356,7 +372,7 @@
               <label for="smtp_pass">SMTP Password</label>
               <div class="password-container">
                 <input type="password" id="smtp_pass" name="smtp_pass" placeholder="••••••••">
-                <span class="password-toggle" onclick="togglePassword('smtp_pass', this)">👁️</span>
+                <i class="fas fa-eye password-toggle" onclick="togglePassword('smtp_pass', this)" style="cursor:pointer; margin-left:8px; color:#7f8c8d;"></i>
               </div>
               <p class="info-text">Your password is encrypted and stored securely</p>
             </div>
@@ -403,7 +419,7 @@
 
         <!-- Danger Zone -->
         <div class="settings-section" style="border-left: 4px solid #e74c3c;">
-          <h3 style="color: #e74c3c; border-bottom-color: #e74c3c;">⚠️ Danger Zone</h3>
+          <h3 style="color: #e74c3c; border-bottom-color: #e74c3c;"><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
           <div class="form-group">
             <label>Clear Cache</label>
             <p class="info-text">Remove all cached data to improve performance or fix issues</p>
@@ -421,26 +437,26 @@
   </div>
 
   <script>
-    // Add form submission handling
+    // Add form submission handling (placeholder behavior)
     document.querySelectorAll('form').forEach(form => {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         alert('Settings saved successfully!');
-        // In production, you would submit via AJAX or allow form submission
+        // In production, submit the form or use AJAX here
       });
     });
-  
 
-  // Password toggle function
-  function togglePassword(inputId, toggleElement) {
-    const passwordInput = document.getElementById(inputId);
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    
-    // Change icon based on state
-    toggleElement.textContent = type === 'password' ? '👁️' : '🙈';
-  }
+    // Password toggle function: swaps input type and icon class
+    function togglePassword(inputId, toggleElement) {
+      const passwordInput = document.getElementById(inputId);
+      if (!passwordInput) return;
+      const isPassword = passwordInput.getAttribute('type') === 'password';
+      passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+      if (toggleElement && toggleElement.classList) {
+        toggleElement.classList.toggle('fa-eye');
+        toggleElement.classList.toggle('fa-eye-slash');
+      }
+    }
   </script>
 </body>
 </html>
-

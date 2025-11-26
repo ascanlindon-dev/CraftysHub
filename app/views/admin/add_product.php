@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Add New Product</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
     * {
       margin: 0;
@@ -12,8 +13,8 @@
     }
 
     body {
-      font-family: "Poppins", sans-serif;
-      background: #f5f6fa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #faf9f7;
       display: flex;
       min-height: 100vh;
     }
@@ -34,7 +35,7 @@
       padding: 20px 0;
       font-size: 22px;
       font-weight: 600;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       margin-bottom: 30px;
     }
 
@@ -53,7 +54,7 @@
     }
 
     .sidebar ul li.active {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       border-left: 4px solid #fff;
     }
 
@@ -80,7 +81,7 @@
     .main-content {
       margin-left: 260px;
       flex: 1;
-      background: #f5f6fa;
+      background: #faf9f7;
     }
 
     .dashboard-content {
@@ -98,7 +99,7 @@
 
     h2 {
       font-size: 28px;
-      color: #2c3e50;
+      color: #2D2D2D;
       margin-bottom: 30px;
       font-weight: 600;
     }
@@ -108,21 +109,21 @@
       margin-top: 20px;
       margin-bottom: 8px;
       font-weight: 500;
-      color: #555;
+      color: #777;
     }
 
     input, textarea {
       width: 100%;
       padding: 12px 15px;
       margin-top: 5px;
-      border: 1px solid #ddd;
+      border: 1px solid #E8D4C8;
       border-radius: 8px;
       font-size: 14px;
       transition: border 0.3s;
     }
 
     input:focus, textarea:focus {
-      border-color: #667eea;
+      border-color: #D9967D;
       outline: none;
     }
 
@@ -148,13 +149,13 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #D9967D 0%, #C88A6F 100%);
       color: white;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 5px 15px rgba(217, 150, 125, 0.4);
     }
 
     .btn-cancel {
@@ -196,37 +197,37 @@
       <ul>
         <li>
           <a href="/admin/dashboard" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>🏠</i><span>Dashboard</span>
+            <i class="fas fa-home"></i><span>Dashboard</span>
           </a>
         </li>
         <li class="active">
           <a href="/admin/products" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>🛍️</i><span>Products</span>
+            <i class="fas fa-box"></i><span>Products</span>
           </a>
         </li>
         <li>
           <a href="/admin/inventory" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>📋</i><span>Inventory</span>
+            <i class="fas fa-list"></i><span>Inventory</span>
           </a>
         </li>
         <li>
           <a href="/admin/users" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>👥</i><span>Users</span>
+            <i class="fas fa-users"></i><span>Users</span>
           </a>
         </li>
         <li>
           <a href="/admin/orders" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>📦</i><span>Orders</span>
+            <i class="fas fa-shopping-cart"></i><span>Orders</span>
           </a>
         </li>
         <li>
           <a href="/admin/revenue" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>💰</i><span>Revenue</span>
+            <i class="fas fa-chart-line"></i><span>Revenue</span>
           </a>
         </li>
         <li>
           <a href="/admin/settings" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
-            <i>⚙️</i><span>Settings</span>
+            <i class="fas fa-cog"></i><span>Settings</span>
           </a>
         </li>
       </ul>
@@ -237,7 +238,7 @@
   <div class="main-content">
     <div class="dashboard-content">
       <div class="container">
-        <h2>➕ Add New Product</h2>
+        <h2>Add New Product</h2>
     <form method="POST" action="/admin/create_product">
 
         <label>Product Name *</label>
@@ -255,8 +256,8 @@
         <label>Image URL</label>
         <input type="text" name="image_url" placeholder="https://example.com/image.jpg">
 
-        <button type="submit" class="btn-primary">💾 Add Product</button>
-        <button type="button" onclick="window.location.href='/admin/products'" class="btn-cancel">⬅️ Cancel</button>
+        <button type="submit" class="btn-primary"><i class="fas fa-save"></i> Add Product</button>
+        <button type="button" onclick="window.location.href='/admin/products'" class="btn-cancel"><i class="fas fa-arrow-left"></i> Cancel</button>
     </form>
       </div>
     </div>
