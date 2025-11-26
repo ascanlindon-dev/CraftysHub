@@ -17,7 +17,7 @@ function notif_helper($recipient, $subject, $message, $attachment_path = null)
         $mail->Username   = 'ascanlindon@gmail.com';
         $mail->Password   = 'cuot mtcq vrwt ezwu';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port       = 465;
+        $mail->Port       = 587;
 
         //Recipients
         $mail->setFrom('ascanlindon@gmail.com', 'OTP Sender');
