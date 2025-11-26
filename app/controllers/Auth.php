@@ -91,15 +91,9 @@ class Auth extends Controller {
                                 'created_at' => date('Y-m-d H:i:s')
                             ];
 
-
-                            // Send OTP to email with debug
-                            require_once __DIR__ . '/../helpers/notif_helper.php';
-                            // Enable debug output in notif_helper
-                            $result = notif_helper($email, 'Your OTP Code', "Your OTP is: $otp");
-                            if ($result !== true) {
-                                echo '<pre>Mailer Error: ' . htmlspecialchars($result) . '</pre>';
-                                exit;
-                            }
+                            // Send OTP to email (implement email sending next)
+                            // require_once APPPATH . 'helpers/email_helper.php';
+                            // send_otp_email($email, $otp);
 
                             // Redirect to OTP verification page
                             redirect('/otp_verify');

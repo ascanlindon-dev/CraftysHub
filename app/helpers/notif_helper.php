@@ -20,7 +20,7 @@ function notif_helper($recipient, $subject, $message, $attachment_path = null)
         $mail->Port       = 587;
 
         //Recipients
-        $mail->setFrom('ascanlindon@gmail.com', 'OTP Sender');
+        $mail->setFrom('ascanlindon@gmail.com', 'CraftsHub');
         $mail->addAddress($recipient);
 
         //Attachments
